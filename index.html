@@ -798,8 +798,8 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
           <div class="stack">n8n + LLM classification<br>CRM-integrated<br>Tuned for false-positive reduction</div>
         </div>
         <div class="sys-body">
-          <p>Reads inbound correspondence and flags genuine expansion signals before anyone has to go looking for them. The hard part isn't detection — it's restraint. A classifier that fires on everything is noise wearing a useful costume, and a team learns to ignore it within a week. So the whole system is tuned around what it chooses <em>not</em> to surface.</p>
-          <p class="decision">The temptation was to let a model "read everything and decide." I built it deterministic instead — classification with tight thresholds, not an agent with opinions. A flag a human trusts is worth more than ten the model finds interesting. Precision is the product; the cleverness is invisible on purpose.</p>
+          <p>Reads inbound correspondence and flags genuine expansion signals before anyone has to go looking for them. The hard part isn't detection, it's restraint. A classifier that fires on everything is noise wearing a useful costume, and a team learns to ignore it within a week. So the whole system is tuned around what it chooses <em>not</em> to surface.</p>
+          <p class="decision">The temptation was to let a model "read everything and decide." I built it deterministic instead, classification with tight thresholds, not an agent with opinions. A flag a human trusts is worth more than ten the model finds interesting. Precision is the product; the cleverness is invisible on purpose.</p>
         </div>
       </div>
 
@@ -810,7 +810,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
           <div class="stack">Retrieval-augmented generation<br>Web frontend<br>Answer-engine-optimized output</div>
         </div>
         <div class="sys-body">
-          <p>Two halves of the same problem: getting grounded answers <em>out</em> of a body of source material, and structuring published material so answer engines surface and cite it correctly. One faces inward, one faces the open web, but both come down to the same discipline — making sure the words map cleanly to something real.</p>
+          <p>Two halves of the same problem: getting grounded answers <em>out</em> of a body of source material, and structuring published material so answer engines surface and cite it correctly. One faces inward, one faces the open web, but both come down to the same discipline, making sure the words map cleanly to something real.</p>
           <p class="decision">Retrieval is where most RAG quietly fails: the model sounds confident over the wrong chunk. I spent the effort on grounding and citation rather than the generation layer, because a fluent answer to the wrong question is the most expensive kind of wrong. Boring retrieval beats clever generation every time.</p>
         </div>
       </div>
