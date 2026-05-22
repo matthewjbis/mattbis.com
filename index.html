@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Matthew Bis — AI Automation & GTM Systems</title>
+<title>Matthew Bis | AI Automation & GTM Systems</title>
 <meta name="description" content="Matthew Bis builds production-grade automation that closes the gap between AI capability and workflow utility. Marketing automation, GTM engineering, linguistics.">
 <meta name="theme-color" content="#f4f1ea">
-<meta property="og:title" content="Matthew Bis — AI Automation & GTM Systems">
+<meta property="og:title" content="Matthew Bis | AI Automation & GTM Systems">
 <meta property="og:description" content="Production-grade automation that closes the gap between AI capability and workflow utility.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mattbis.com">
@@ -132,10 +132,48 @@ nav{
 nav .brand{font-weight:500;color:var(--ink);text-decoration:none;
   padding:8px 0;display:inline-block}
 nav .links{display:flex;gap:6px;align-items:center}
-nav .links a{color:var(--ink-soft);text-decoration:none;
+nav .links > a{color:var(--ink-soft);text-decoration:none;
   padding:10px 14px;transition:color .25s,background .25s;border-radius:2px}
-nav .links a:hover{color:var(--accent)}
-nav .links a.active{color:var(--ink)}
+nav .links > a:hover{color:var(--accent)}
+nav .links > a.active{color:var(--ink)}
+
+/* contact dropdown */
+.dropdown{position:relative;display:inline-flex}
+.dropdown-toggle{
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-soft);background:transparent;border:0;cursor:pointer;
+  padding:10px 14px;border-radius:2px;
+  display:inline-flex;align-items:center;gap:7px;
+  transition:color .25s;
+}
+.dropdown-toggle:hover{color:var(--accent)}
+.dropdown-toggle .caret{
+  width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg);margin-top:-3px;
+  transition:transform .3s var(--easing);
+}
+.dropdown[data-open="true"] .dropdown-toggle{color:var(--accent)}
+.dropdown[data-open="true"] .caret{transform:rotate(225deg);margin-top:1px}
+.dropdown-menu{
+  position:absolute;top:calc(100% + 6px);right:0;
+  background:var(--paper);border:1px solid var(--line);border-radius:3px;
+  box-shadow:0 8px 28px var(--shadow);
+  min-width:210px;padding:6px;
+  display:flex;flex-direction:column;
+  opacity:0;transform:translateY(-6px);pointer-events:none;
+  transition:opacity .22s var(--easing),transform .22s var(--easing);
+  mix-blend-mode:normal;
+}
+.dropdown[data-open="true"] .dropdown-menu{opacity:1;transform:none;pointer-events:auto}
+.dropdown-menu a{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.03em;text-transform:none;
+  color:var(--ink-soft);text-decoration:none;
+  padding:11px 12px;border-radius:2px;
+  transition:color .2s,background .2s;
+}
+.dropdown-menu a:hover{color:var(--accent);background:var(--bg)}
+.dropdown-menu a .dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
 
 /* hamburger */
 .menu-btn{
@@ -190,6 +228,7 @@ nav .links a.active{color:var(--ink)}
 .drawer.open a:nth-child(3){transition-delay:.20s}
 .drawer.open a:nth-child(4){transition-delay:.26s}
 .drawer.open a:nth-child(5){transition-delay:.32s}
+.drawer.open a:nth-child(6){transition-delay:.38s}
 .drawer .foot{margin-top:auto;font-family:var(--mono);font-size:11px;
   color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;
   display:flex;flex-direction:column;gap:8px;padding-top:32px}
@@ -572,6 +611,15 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     <a href="#patterns">Patterns</a>
     <a href="#approach">Approach</a>
     <a href="#signal">Newsletter</a>
+    <span class="dropdown" id="contactDropdown">
+      <button type="button" class="dropdown-toggle" id="contactToggle" aria-haspopup="true" aria-expanded="false" aria-controls="contactMenu">
+        Contact<span class="caret" aria-hidden="true"></span>
+      </button>
+      <span class="dropdown-menu" id="contactMenu" role="menu">
+        <a href="mailto:matthewjbis@gmail.com" role="menuitem"><span class="dot" aria-hidden="true"></span>Email</a>
+        <a href="https://www.linkedin.com/in/matthewjbis/" target="_blank" rel="noopener" role="menuitem"><span class="dot" aria-hidden="true"></span>LinkedIn ↗</a>
+      </span>
+    </span>
   </span>
   <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
     <span></span>
@@ -604,7 +652,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     </h1>
     <p class="lede">There's a gap between a demo that wows a room and a system someone trusts on a Tuesday morning. I work in that gap. I build automation that keeps running on real data long after the flashy version would have fallen over.</p>
     <div class="meta-row">
-      <span>140+ systems shipped to production</span>
+      <span>150+ systems shipped to production</span>
       <span>Linguist by training</span>
       <span>Builder by practice</span>
     </div>
@@ -692,7 +740,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
       </div>
       <div class="proof-cell">
         <div class="cap-top">Volume shipped</div>
-        <div class="stat">140<em>+</em></div>
+        <div class="stat">150<em>+</em></div>
         <div class="cap">Automations shipped to production, not prototypes left in a sandbox</div>
       </div>
     </div>
@@ -743,27 +791,27 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
         </div>
       </div>
 
-      <div class="sys stub">
+      <div class="sys">
         <div class="sys-meta">
           <div class="kind">Sales-signal triage</div>
           <h3>An LLM-augmented pipeline that surfaces upsell signals buried in correspondence</h3>
           <div class="stack">n8n + LLM classification<br>CRM-integrated<br>Tuned for false-positive reduction</div>
         </div>
         <div class="sys-body">
-          <p>Reads inbound correspondence and flags genuine expansion signals without drowning the team in noise. Deterministic on purpose. The value is the precision, not the cleverness.</p>
-          <span class="sys-soon">Full write-up coming</span>
+          <p>Reads inbound correspondence and flags genuine expansion signals before anyone has to go looking for them. The hard part isn't detection — it's restraint. A classifier that fires on everything is noise wearing a useful costume, and a team learns to ignore it within a week. So the whole system is tuned around what it chooses <em>not</em> to surface.</p>
+          <p class="decision">The temptation was to let a model "read everything and decide." I built it deterministic instead — classification with tight thresholds, not an agent with opinions. A flag a human trusts is worth more than ten the model finds interesting. Precision is the product; the cleverness is invisible on purpose.</p>
         </div>
       </div>
 
-      <div class="sys stub">
+      <div class="sys">
         <div class="sys-meta">
           <div class="kind">Retrieval & content</div>
           <h3>RAG assistant + AEO/GEO content pipeline</h3>
           <div class="stack">Retrieval-augmented generation<br>Web frontend<br>Answer-engine-optimized output</div>
         </div>
         <div class="sys-body">
-          <p>A grounded question-answering system and a content pipeline built for how answer engines surface and cite material.</p>
-          <span class="sys-soon">Full write-up coming</span>
+          <p>Two halves of the same problem: getting grounded answers <em>out</em> of a body of source material, and structuring published material so answer engines surface and cite it correctly. One faces inward, one faces the open web, but both come down to the same discipline — making sure the words map cleanly to something real.</p>
+          <p class="decision">Retrieval is where most RAG quietly fails: the model sounds confident over the wrong chunk. I spent the effort on grounding and citation rather than the generation layer, because a fluent answer to the wrong question is the most expensive kind of wrong. Boring retrieval beats clever generation every time.</p>
         </div>
       </div>
 
@@ -814,6 +862,28 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     });
   },{threshold:.15, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // ─── contact dropdown ───────────────────────────
+  var dd = document.getElementById('contactDropdown');
+  var ddToggle = document.getElementById('contactToggle');
+  function closeDropdown(){
+    dd.setAttribute('data-open','false');
+    ddToggle.setAttribute('aria-expanded','false');
+  }
+  function openDropdown(){
+    dd.setAttribute('data-open','true');
+    ddToggle.setAttribute('aria-expanded','true');
+  }
+  ddToggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    if(dd.getAttribute('data-open') === 'true') closeDropdown(); else openDropdown();
+  });
+  document.addEventListener('click', function(e){
+    if(dd.getAttribute('data-open') === 'true' && !dd.contains(e.target)) closeDropdown();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && dd.getAttribute('data-open') === 'true'){ closeDropdown(); ddToggle.focus(); }
+  });
 
   // ─── mobile drawer ──────────────────────────────
   var btn = document.getElementById('menuBtn');
@@ -889,7 +959,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   });
 
   // ─── active nav link based on scroll ────────────
-  var navLinks = document.querySelectorAll('nav .links a');
+  var navLinks = document.querySelectorAll('nav .links > a');
   var sections = Array.from(navLinks).map(function(a){
     return document.querySelector(a.getAttribute('href'));
   });
