@@ -124,10 +124,16 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;justify-content:space-between;align-items:center;
   padding:18px 7vw;
-  mix-blend-mode:multiply;
+  background:color-mix(in srgb, var(--bg) 86%, transparent);
+  backdrop-filter:saturate(140%) blur(8px);
+  -webkit-backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--easing), background .3s var(--easing);
   font-family:var(--mono);
   font-size:12px;letter-spacing:.08em;text-transform:uppercase;
 }
+/* hairline appears once you've scrolled past the hero */
+nav.scrolled{border-bottom-color:var(--line)}
 @media(max-width:640px){nav{padding:14px 22px}}
 nav .brand{font-weight:500;color:var(--ink);text-decoration:none;
   padding:8px 0;display:inline-block}
@@ -1025,6 +1031,16 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
       sub.textContent = 'Subscribe';
     });
   });
+
+  // ─── nav hairline on scroll ─────────────────────
+  var navEl = document.querySelector('nav');
+  if(navEl){
+    var onScroll = function(){
+      navEl.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
+  }
 
   // ─── stack marquee ──────────────────────────────
   var ICONS = [
