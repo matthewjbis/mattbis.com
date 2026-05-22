@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matthew Bis — AI Automation & GTM Systems</title>
+<meta name="description" content="Matthew Bis builds production-grade automation that closes the gap between AI capability and workflow utility. Marketing automation, GTM engineering, linguistics.">
+<meta property="og:title" content="Matthew Bis — AI Automation & GTM Systems">
+<meta property="og:description" content="Production-grade automation that closes the gap between AI capability and workflow utility.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mattbis.com">
+<link rel="canonical" href="https://mattbis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1ea;
+  --ink:#1a1714;
+  --ink-soft:#4a443c;
+  --ink-faint:#8a8175;
+  --line:#d8d2c6;
+  --accent:#b5341f;
+  --paper:#faf8f3;
+  --shadow:rgba(26,23,20,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;mix-blend-mode:multiply;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 7vw}
+@media(max-width:640px){.wrap{padding:0 24px}}
+
+/* nav */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 7vw;
+  mix-blend-mode:multiply;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+}
+@media(max-width:640px){nav{padding:18px 24px}}
+nav .brand{font-weight:500;color:var(--ink)}
+nav .links{display:flex;gap:28px}
+nav a{color:var(--ink-soft);text-decoration:none;transition:color .25s}
+nav a:hover{color:var(--accent)}
+@media(max-width:640px){nav .links{display:none}}
+
+/* hero */
+header{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding-top:80px;padding-bottom:60px;position:relative;
+}
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:34px;display:flex;align-items:center;gap:14px;
+  opacity:0;animation:rise .9s .1s forwards;
+}
+.eyebrow::before{content:"";width:42px;height:1px;background:var(--accent)}
+h1{
+  font-family:'Fraunces',serif;
+  font-weight:400;
+  font-size:clamp(2.7rem,7.5vw,5.6rem);
+  line-height:1.02;letter-spacing:-.02em;
+  margin-bottom:38px;max-width:15ch;
+}
+h1 .l{display:block;opacity:0;animation:rise 1s forwards}
+h1 .l:nth-child(1){animation-delay:.2s}
+h1 .l:nth-child(2){animation-delay:.32s}
+h1 .l:nth-child(3){animation-delay:.44s}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{
+  font-size:clamp(1.15rem,2.2vw,1.5rem);
+  color:var(--ink-soft);max-width:46ch;line-height:1.55;
+  opacity:0;animation:rise 1s .6s forwards;
+}
+.meta-row{
+  display:flex;gap:30px;margin-top:48px;flex-wrap:wrap;
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);
+  opacity:0;animation:rise 1s .8s forwards;
+}
+.meta-row span{display:flex;align-items:center;gap:9px}
+.meta-row span::before{content:"";width:5px;height:5px;background:var(--accent);border-radius:50%}
+
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* section scaffolding */
+section{padding:clamp(70px,11vw,140px) 0;position:relative}
+.sec-label{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+  margin-bottom:18px;
+}
+.sec-head{
+  font-family:'Fraunces',serif;font-weight:400;
+  font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.1;
+  letter-spacing:-.015em;max-width:20ch;margin-bottom:8px;
+}
+.divider{height:1px;background:var(--line);border:0;margin:0}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* thesis */
+.thesis{font-family:'Fraunces',serif;font-weight:300;
+  font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:1.32;letter-spacing:-.01em;
+  max-width:24ch;}
+.thesis em{font-style:italic;color:var(--accent)}
+.thesis .small{display:block;font-family:'Newsreader',serif;font-size:1.15rem;
+  line-height:1.6;color:var(--ink-soft);max-width:52ch;margin-top:34px;font-weight:400}
+
+/* work cards */
+.work-grid{display:grid;gap:0;margin-top:44px;border-top:1px solid var(--line)}
+.work-row{
+  display:grid;grid-template-columns:90px 1fr;gap:34px;
+  padding:38px 0;border-bottom:1px solid var(--line);
+  align-items:start;transition:padding-left .4s ease;
+}
+.work-row:hover{padding-left:14px}
+@media(max-width:640px){.work-row{grid-template-columns:1fr;gap:14px}}
+.work-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);padding-top:6px}
+.work-row h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:12px}
+.work-row p{color:var(--ink-soft);font-size:1.05rem;line-height:1.6;max-width:60ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.04em;
+  color:var(--ink-faint);border:1px solid var(--line);padding:4px 11px;border-radius:2px}
+
+/* proof / patterns */
+.proof{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  margin-top:44px;border:1px solid var(--line)}
+@media(max-width:760px){.proof-grid{grid-template-columns:1fr}}
+.proof-cell{background:var(--paper);padding:36px 30px}
+.proof-cell .stat{font-family:'Fraunces',serif;font-size:2.6rem;font-weight:400;
+  letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.proof-cell .stat em{font-style:normal;color:var(--accent)}
+.proof-cell .cap{font-family:'JetBrains Mono',monospace;font-size:11.5px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-top:16px;line-height:1.5}
+
+/* approach list */
+.approach{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:44px}
+@media(max-width:760px){.approach{grid-template-columns:1fr;gap:38px}}
+.approach-item h4{font-family:'Fraunces',serif;font-weight:500;font-size:1.25rem;margin-bottom:10px;
+  display:flex;gap:12px;align-items:baseline}
+.approach-item h4 .i{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent)}
+.approach-item p{color:var(--ink-soft);font-size:1.02rem;line-height:1.62}
+
+/* languages strip */
+.lang-strip{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
+.lang{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:400}
+.lang .lvl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-faint);
+  letter-spacing:.05em;text-transform:uppercase;margin-left:6px;vertical-align:middle}
+.lang-sep{color:var(--line);font-size:1.6rem}
+
+/* selected systems */
+.systems{display:grid;gap:0;margin-top:44px;border-top:1px solid var(--line)}
+.sys{padding:46px 0;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:start}
+@media(max-width:760px){.sys{grid-template-columns:1fr;gap:22px;padding:38px 0}}
+.sys-meta .kind{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.sys-meta h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.65rem;
+  letter-spacing:-.01em;line-height:1.15;margin-bottom:16px}
+.sys-meta .stack{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-faint);
+  line-height:1.7;letter-spacing:.02em}
+.sys-body p{color:var(--ink-soft);font-size:1.06rem;line-height:1.64;margin-bottom:16px}
+.sys-body p:last-child{margin-bottom:0}
+.sys-body .decision{font-family:'Fraunces',serif;font-style:italic;font-size:1.12rem;
+  color:var(--ink);border-left:2px solid var(--accent);padding-left:18px;line-height:1.5}
+.sys.stub{opacity:.62}
+.sys.stub .sys-meta h3{color:var(--ink-faint)}
+.sys-soon{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-faint);border:1px dashed var(--line);
+  display:inline-block;padding:5px 12px;border-radius:2px}
+.news{background:var(--ink);color:var(--paper);border-radius:0}
+.news .wrap{padding-top:clamp(70px,10vw,120px);padding-bottom:clamp(70px,10vw,120px)}
+.news .sec-label{color:var(--ink-faint)}
+.news h2{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2rem,5vw,3.4rem);
+  letter-spacing:-.015em;line-height:1.05;margin-bottom:20px;max-width:16ch}
+.news h2 em{font-style:italic;color:#e8a08d}
+.news p{color:#c9c2b6;max-width:44ch;font-size:1.1rem;margin-bottom:38px}
+.form{display:flex;gap:10px;max-width:440px;flex-wrap:wrap}
+.form input{flex:1;min-width:220px;background:transparent;border:0;border-bottom:1px solid #555049;
+  color:var(--paper);font-family:'Newsreader',serif;font-size:1.1rem;padding:12px 2px;outline:none;
+  transition:border-color .3s}
+.form input::placeholder{color:#7d766c}
+.form input:focus{border-color:#e8a08d}
+.form button{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--accent);color:#fff;border:0;padding:14px 26px;
+  cursor:pointer;transition:background .3s,transform .15s;border-radius:2px}
+.form button:hover{background:#9c2c1a}
+.form button:active{transform:scale(.97)}
+.form-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:#7d766c;
+  letter-spacing:.04em;margin-top:18px}
+.form-msg{color:#e8a08d;font-family:'JetBrains Mono',monospace;font-size:12px;margin-top:18px;
+  min-height:16px;letter-spacing:.04em}
+
+/* footer */
+footer{padding:50px 0;font-family:'JetBrains Mono',monospace;font-size:12px;
+  letter-spacing:.05em;color:var(--ink-faint);display:flex;justify-content:space-between;
+  flex-wrap:wrap;gap:20px}
+footer a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);
+  padding-bottom:1px;transition:color .25s,border-color .25s}
+footer a:hover{color:var(--accent);border-color:var(--accent)}
+footer .fl{display:flex;gap:24px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">Matthew&nbsp;Bis</span>
+  <span class="links">
+    <a href="#work">Work</a>
+    <a href="#systems">Systems</a>
+    <a href="#patterns">Patterns</a>
+    <a href="#approach">Approach</a>
+    <a href="#signal">Newsletter</a>
+  </span>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Chicago, IL — AI Automation & GTM Engineering</div>
+    <h1>
+      <span class="l">AI is powerful.</span>
+      <span class="l">I make it <em>useful</em></span>
+      <span class="l">for the work in front of you.</span>
+    </h1>
+    <p class="lede">There's a gap between a demo that wows a room and a system someone actually trusts on a Tuesday morning. I work in that gap. I build automation that keeps running on real data, quietly, long after the impressive version would've fallen over — and I'm genuinely happier debugging the unglamorous part than shipping the flashy one.</p>
+    <div class="meta-row">
+      <span>140+ systems shipped to production</span>
+      <span>Linguist by training</span>
+      <span>Builder by practice</span>
+    </div>
+  </div>
+</header>
+
+<hr class="divider">
+
+<section id="thesis">
+  <div class="wrap reveal">
+    <div class="sec-label">The premise</div>
+    <p class="thesis">The model was never the hard part. The hard part is figuring out what one person actually does all day — and building something that does it for them, and keeps doing it when nobody's watching.
+      <span class="small">I came to this sideways, through linguistics — the study of how meaning gets built and how it quietly falls apart. Turns out that's the same problem as making an AI system behave: precise language in, predictable behavior out. Which is why I don't think the scarce skill is writing code. Plenty of people write code. The scarce skill is taste — knowing what to build, what to keep boring and deterministic, and what to leave alone entirely. Most of my best decisions have been things I talked someone out of.</span>
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="work">
+  <div class="wrap reveal">
+    <div class="sec-label">What I work on</div>
+    <h2 class="sec-head">Three currents, often running at once</h2>
+    <div class="work-grid">
+      <div class="work-row">
+        <div class="work-num">01</div>
+        <div>
+          <h3>AI Automation</h3>
+          <p>Workflows that triage, enrich, decide, and act on real data — opportunity detection across sales correspondence, free-text-to-live-campaign engines, content pipelines that hold a brand voice. I build deterministic systems where reliability is the point, and agentic ones where genuine reasoning earns its cost. Choosing correctly between the two is most of the work.</p>
+          <div class="tags"><span class="tag">n8n</span><span class="tag">LangGraph</span><span class="tag">Python</span><span class="tag">Claude / OpenRouter</span><span class="tag">RAG</span><span class="tag">Supabase</span></div>
+        </div>
+      </div>
+      <div class="work-row">
+        <div class="work-num">02</div>
+        <div>
+          <h3>Marketing & RevOps</h3>
+          <p>I close the distance between marketing activity and revenue — wiring the GTM stack end to end and reporting on what actually moves the number, not just what's easy to count. Direct-response instincts in the Halbert/Kennedy tradition, applied to systems instead of single letters.</p>
+          <div class="tags"><span class="tag">Salesforce</span><span class="tag">ActiveCampaign</span><span class="tag">Apollo</span><span class="tag">Instantly</span><span class="tag">Direct response</span></div>
+        </div>
+      </div>
+      <div class="work-row">
+        <div class="work-num">03</div>
+        <div>
+          <h3>Language & Structure</h3>
+          <p>Trained in linguistics with a phonetics specialization; fluent in German, grinding toward C1 Arabic, conversational Spanish. People treat this as a fun fact about me — it's not, it's the actual edge. The difference between getting real work out of an AI system and getting confident-sounding nonsense is almost entirely about how precisely you can say what you mean.</p>
+          <div class="tags"><span class="tag">Linguistics</span><span class="tag">Phonetics / IPA</span><span class="tag">Prompt architecture</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="patterns" class="proof">
+  <div class="wrap reveal">
+    <div class="sec-label">Patterns, not promises</div>
+    <h2 class="sec-head">What "production-grade" actually means</h2>
+    <p style="color:var(--ink-soft);max-width:54ch;margin-top:18px;font-size:1.08rem">A demo runs once, on stage. A system runs every day, on real data, when no one's watching. The difference shows up in the details — dedup logic, hallucination checks, brand-voice enforcement, false-positive reduction.</p>
+    <div class="proof-grid">
+      <div class="proof-cell">
+        <div class="stat"><em>~60s</em></div>
+        <div class="cap">From a free-text customer description to a live, deduplicated outbound campaign</div>
+      </div>
+      <div class="proof-cell">
+        <div class="stat">20<em>+</em></div>
+        <div class="cap">Discrete nodes in a single pipeline — parse, enrich, generate, validate, dedup, launch</div>
+      </div>
+      <div class="proof-cell">
+        <div class="stat">140<em>+</em></div>
+        <div class="cap">Automations shipped to production, not prototypes left in a sandbox</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="wrap reveal">
+    <div class="sec-label">How I think about it</div>
+    <h2 class="sec-head">Principles I build by</h2>
+    <div class="approach">
+      <div class="approach-item">
+        <h4><span class="i">&rarr;</span> Specificity beats generality</h4>
+        <p>General-purpose AI rollouts look impressive and quietly fail. Systems built around one real workflow get used. I'd rather solve one person's actual task completely than gesture at solving everyone's.</p>
+      </div>
+      <div class="approach-item">
+        <h4><span class="i">&rarr;</span> The boring parts are the product</h4>
+        <p>Deduplication, validation, error handling, voice enforcement. Nobody demos these. They're the entire reason a system survives contact with reality.</p>
+      </div>
+      <div class="approach-item">
+        <h4><span class="i">&rarr;</span> Deterministic until proven otherwise</h4>
+        <p>Agentic architecture is a tool, not a default. Most problems want a reliable pipeline. Knowing when <em>not</em> to reach for autonomy is a senior signal.</p>
+      </div>
+      <div class="approach-item">
+        <h4><span class="i">&rarr;</span> Language is the interface</h4>
+        <p>The quality of what comes out of an AI system is bounded by the precision of what goes in. That's a linguistics problem before it's an engineering one.</p>
+      </div>
+    </div>
+    <div class="lang-strip">
+      <span class="lang">English<span class="lvl">native</span></span><span class="lang-sep">/</span>
+      <span class="lang">Deutsch<span class="lvl">fluent</span></span><span class="lang-sep">/</span>
+      <span class="lang">العربية<span class="lvl">&rarr; C1</span></span><span class="lang-sep">/</span>
+      <span class="lang">Español<span class="lvl">conversational</span></span>
+    </div>
+  </div>
+</section>
+
+<section id="systems">
+  <div class="wrap reveal">
+    <div class="sec-label">Selected systems</div>
+    <h2 class="sec-head">A few things I've built, described by what they decide</h2>
+    <p style="color:var(--ink-soft);max-width:56ch;margin-top:18px;font-size:1.08rem">Anonymized on purpose — no clients, no numbers. Honestly, the logo behind a system is the least interesting thing about it. What's worth your time is the architecture and the decisions I made inside it.</p>
+    <div class="systems">
+
+      <div class="sys">
+        <div class="sys-meta">
+          <div class="kind">Free-text &rarr; live campaign engine</div>
+          <h3>From a sentence to a deduplicated outbound sequence in about a minute</h3>
+          <div class="stack">~20-node n8n pipeline<br>Vercel frontend<br>Claude via OpenRouter<br>Apollo enrichment<br>CRM dedup via cloud function</div>
+        </div>
+        <div class="sys-body">
+          <p>You type a plain-English description of who you want to reach. The system parses it into structured targeting filters, pulls and enriches matching prospects, writes a multi-step email sequence in a defined brand voice, checks its own output for hallucinations, dedupes against the CRM so you never accidentally cold-email someone you're already mid-deal with, and pushes the whole thing live. Sentence in, campaign out, hands off.</p>
+          <p class="decision">The part I'm proud of isn't that it's fast — it's that it's <em>not</em> an agent. The LLM does the language; the orchestration does the thinking. Autonomy would've been more fun to demo and far worse to rely on. Choosing boring-and-reliable on purpose is the whole job.</p>
+        </div>
+      </div>
+
+      <div class="sys stub">
+        <div class="sys-meta">
+          <div class="kind">Sales-signal triage</div>
+          <h3>An LLM-augmented pipeline that surfaces upsell opportunities buried in correspondence</h3>
+          <div class="stack">n8n + LLM classification<br>CRM-integrated<br>Tuned for false-positive reduction</div>
+        </div>
+        <div class="sys-body">
+          <p>Reads inbound correspondence and flags genuine expansion signals without drowning the team in noise. Built deterministic on purpose — the value is in the precision, not the cleverness.</p>
+          <span class="sys-soon">Full write-up coming</span>
+        </div>
+      </div>
+
+      <div class="sys stub">
+        <div class="sys-meta">
+          <div class="kind">Retrieval & content</div>
+          <h3>RAG assistant + AEO/GEO content pipeline</h3>
+          <div class="stack">Retrieval-augmented generation<br>Next.js frontend<br>Answer-engine-optimized output</div>
+        </div>
+        <div class="sys-body">
+          <p>A grounded question-answering system and a content pipeline built for how answer engines actually surface and cite material.</p>
+          <span class="sys-soon">Full write-up coming</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="signal" class="news">
+  <div class="wrap reveal">
+    <div class="sec-label">The newsletter</div>
+    <h2>Weekly <em>Signal</em>,<br>Zero Noise</h2>
+    <p>One email a week: an actual system I'm building, the decision behind it, and what broke. Written for people who build — not a recap of this week's AI headlines. Unsubscribe anytime.</p>
+    <div class="form">
+      <input type="email" id="email" placeholder="you@work.com" aria-label="Email address">
+      <button id="sub">Subscribe</button>
+    </div>
+    <div class="form-msg" id="msg"></div>
+    <div class="form-note">Your information is protected. Unsubscribe at any time.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:20px">
+    <span>&copy; 2026 Matthew Bis — Chicago, IL</span>
+    <span class="fl">
+      <a href="https://www.linkedin.com/in/matthewjbis/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/matthewjbis" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:hello@mattbis.com">Email</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+// scroll reveal
+const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.18});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// newsletter (UI only — wire to your provider)
+const btn=document.getElementById('sub'),email=document.getElementById('email'),msg=document.getElementById('msg');
+btn.addEventListener('click',()=>{
+  const v=email.value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){msg.textContent='Enter a valid email address.';return}
+  msg.textContent='Subscribed. Check your inbox to confirm.';
+  email.value='';
+});
+email.addEventListener('keydown',e=>{if(e.key==='Enter')btn.click()});
+</script>
+</body>
+</html>
