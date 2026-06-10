@@ -57,6 +57,7 @@
     "Revenue Operations",
     "GTM Engineering",
     "Prompt Engineering",
+    "Context Engineering",
     "Linguistics",
     "n8n",
     "LangGraph",
@@ -860,7 +861,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   <div class="wrap reveal r-head">
     <div class="sec-label">Selected systems</div>
     <h2 class="sec-head">A few things I've built, described by what they decide</h2>
-    <p class="sec-intro">Anonymized on purpose. No clients, no numbers. The logo behind a system is the least interesting thing about it. What's worth your time is the architecture and the decisions inside it.</p>
+    <p class="sec-intro">Anonymized on purpose. No clients, no revenue figures. The logo behind a system is the least interesting thing about it. What's worth your time is the architecture and the decisions inside it.</p>
     <div class="systems reveal r-stagger">
 
       <div class="sys">
@@ -872,6 +873,18 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
         <div class="sys-body">
           <p>You type a plain-English description of who you want to reach. The system parses it into structured targeting, pulls and enriches matching prospects, writes a multi-step sequence in a defined brand voice, checks its own output for hallucinations, dedupes against the CRM, and pushes it live. Sentence in, campaign out.</p>
           <p class="decision">What I'm proud of isn't the speed. It's that it's <em>not</em> an agent. The LLM does the language; the orchestration does the thinking. Autonomy would have demoed better and broken more. Choosing the reliable architecture over the impressive one is the whole job.</p>
+        </div>
+      </div>
+
+      <div class="sys">
+        <div class="sys-meta">
+          <div class="kind">Context infrastructure</div>
+          <h3>A version-controlled context layer injected into every AI call a company makes</h3>
+          <div class="stack">GitHub repo, structured markdown<br>Composable core / catalog / department layers<br>Slack-native slash command surface<br>Reviewed like code, because it is</div>
+        </div>
+        <div class="sys-body">
+          <p>Prompt libraries collect answers; this maintains truth. One repo of structured markdown — ICP, personas, voice, the claims the company never makes — composed in layers and injected as context into every AI workflow in the org. Anyone can pull it from Slack with a slash command. Nobody can quietly fork it.</p>
+          <p class="decision">Hallucination is a context problem before it's a prompt problem. A model fills gaps with plausible fiction when nobody hands it the source of truth. Treating context like code — versioned, composable, reviewed — turned drafts that needed three rounds of correction into drafts that come back clean.</p>
         </div>
       </div>
 
@@ -894,7 +907,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
           <div class="stack">Retrieval-augmented generation<br>Web frontend<br>Answer-engine-optimized output</div>
         </div>
         <div class="sys-body">
-          <p>Two halves of the same problem: getting grounded answers <em>out</em> of a body of source material, and structuring published material so answer engines surface and cite it correctly. One faces inward, one faces the open web, but both come down to the same discipline, making sure the words map cleanly to something real.</p>
+          <p>Two halves of the same problem: getting grounded answers <em>out</em> of a body of source material, and structuring published material so answer engines surface and cite it correctly. One faces inward, one faces the open web, but both come down to the same discipline, making sure the words map cleanly to something real. The public-facing half grew AI-referral traffic roughly 8x year over year.</p>
           <p class="decision">Retrieval is where most RAG quietly fails: the model sounds confident over the wrong chunk. I spent the effort on grounding and citation rather than the generation layer, because a fluent answer to the wrong question is the most expensive kind of wrong. Disciplined retrieval beats clever generation every time.</p>
         </div>
       </div>
@@ -919,10 +932,10 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   <div class="wrap reveal r-head">
     <div class="sec-label">The newsletter</div>
     <h2><em>Signal</em>,<br>Not Noise</h2>
-    <p>An occasional email: a system I'm building, the decision behind it, and what broke. Written for people who build, not a recap of this week's AI headlines.</p>
+    <p>One real system per issue: what it does, the architecture decision behind it, and what broke before it worked. If you build automation for a living — or want to — this is the tuition I already paid, free. No hype, no headline roundups.</p>
     <form class="form" id="newsForm" novalidate>
       <input type="email" id="email" placeholder="you@work.com" aria-label="Email address" autocomplete="email" required>
-      <button id="sub" type="submit">Subscribe</button>
+      <button id="sub" type="submit">Get the next issue</button>
     </form>
     <div class="form-msg" id="msg" role="status" aria-live="polite"></div>
     <div class="form-note">Your information is protected. Unsubscribe at any time.</div>
@@ -1036,7 +1049,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
       return;
     }
     sub.disabled = true;
-    sub.textContent = 'Subscribing…';
+    sub.textContent = 'Sending…';
     msg.classList.remove('show');
     fetch('https://app.kit.com/forms/9472421/subscriptions', {
       method: 'POST',
@@ -1050,7 +1063,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
       showMsg('Something went wrong. Please try again, or email matthewjbis@gmail.com.', true);
     }).then(function(){
       sub.disabled = false;
-      sub.textContent = 'Subscribe';
+      sub.textContent = 'Get the next issue';
     });
   });
 
