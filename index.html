@@ -866,6 +866,18 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 
       <div class="sys">
         <div class="sys-meta">
+          <div class="kind">Account intelligence &rarr; sales floor</div>
+          <h3>One Slack command returns an account brief that already knows what you sell them</h3>
+          <div class="stack">Slack slash command (async webhook)<br>n8n parallel fan-out / merge<br>Version-controlled context, fetched at runtime<br>Open-web research + CRM state, fused<br>LLM synthesis, Claude via OpenRouter</div>
+        </div>
+        <div class="sys-body">
+          <p>A rep types a company name into the channel they already live in and gets back a structured brief seconds later: ICP fit, likely buyers, application match, recommended products, and the field most research tools skip entirely, the relationship. Net-new or existing account? What do they already own? Is there open pipeline a teammate is quietly working? The command fans out in parallel, reads the company's public footprint from a live research API, pulls demand-side truth from the CRM, composes both against a version-controlled context layer, and posts the answer back to the same thread.</p>
+          <p class="decision">Most "research bots" summarize a website. The work here was the join: supply-side signal from the open web against demand-side reality from the CRM, so the brief can tell a rep they're about to walk into a deal a colleague already owns. The context files are read from a versioned repo at request time, never pasted into a prompt, so one edit propagates to every brief the team will ever run. And customer data is walled off from model training by default. That last constraint is the one nobody asks for. It's also the reason a system like this is allowed near a CRM at all.</p>
+        </div>
+      </div>
+
+      <div class="sys">
+        <div class="sys-meta">
           <div class="kind">Free-text &rarr; live campaign engine</div>
           <h3>A sentence becomes a deduplicated outbound sequence in about a minute</h3>
           <div class="stack">Multi-stage n8n pipeline<br>Web frontend<br>LLM for language<br>Enrichment + CRM dedup</div>
