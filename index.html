@@ -246,6 +246,7 @@ nav .links > a.active{color:var(--ink)}
 .drawer.open a:nth-child(4){transition-delay:.26s}
 .drawer.open a:nth-child(5){transition-delay:.32s}
 .drawer.open a:nth-child(6){transition-delay:.38s}
+.drawer.open a:nth-child(7){transition-delay:.44s}
 .drawer .foot{margin-top:auto;font-family:var(--mono);font-size:11px;
   color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;
   display:flex;flex-direction:column;gap:8px;padding-top:32px}
@@ -597,6 +598,31 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
   text-transform:uppercase;color:var(--ink-faint);border:1px dashed var(--line);
   display:inline-block;padding:6px 12px;border-radius:2px;margin-top:8px}
 
+/* selected-systems → leverage coda */
+.sys-cta{
+  margin-top:6px;padding-top:48px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:22px;
+}
+.sys-cta p{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.32;letter-spacing:-.015em;
+  color:var(--ink);max-width:30ch;
+}
+.sys-cta p em{font-style:normal;color:var(--accent)}
+.sys-cta-link{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+  display:inline-flex;align-items:center;gap:9px;
+  padding:6px 0;border-bottom:1px solid transparent;
+  transition:gap .25s var(--easing),border-color .25s;
+}
+.sys-cta-link .arr{transition:transform .25s var(--easing)}
+.sys-cta-link:hover{border-bottom-color:var(--accent)}
+.sys-cta-link:hover .arr{transform:translate(2px,-2px)}
+@media(max-width:640px){
+  .sys-cta{padding-top:40px;gap:18px}
+}
+
 /* ─── NEWSLETTER ──────────────────────────────────── */
 .news{background:var(--ink);color:var(--paper)}
 .news .wrap{padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(72px,10vw,120px)}
@@ -688,6 +714,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     <a href="#approach">Approach</a>
     <a href="#signal">Newsletter</a>
     <a href="https://blog.mattbis.com" target="_blank" rel="noopener">Blog&nbsp;&#8599;</a>
+    <a href="https://leverage.mattbis.com" target="_blank" rel="noopener">Leverage&nbsp;&#8599;</a>
     <span class="dropdown" id="contactDropdown">
       <button type="button" class="dropdown-toggle" id="contactToggle" aria-haspopup="true" aria-expanded="false" aria-controls="contactMenu">
         Contact<span class="caret" aria-hidden="true"></span>
@@ -710,6 +737,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   <a href="#approach" data-nav><span>Approach</span><span class="n">04</span></a>
   <a href="#signal" data-nav><span>Newsletter</span><span class="n">05</span></a>
   <a href="https://blog.mattbis.com" target="_blank" rel="noopener" data-nav><span>Blog</span><span class="n">&#8599;</span></a>
+  <a href="https://leverage.mattbis.com" target="_blank" rel="noopener" data-nav><span>Leverage</span><span class="n">&#8599;</span></a>
   <div class="foot">
     <span>Chicago, IL</span>
     <a href="mailto:matthewjbis@gmail.com" data-nav>matthewjbis@gmail.com</a>
@@ -936,6 +964,10 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
         </div>
       </div>
 
+    </div>
+    <div class="sys-cta reveal">
+      <p>These aren't one-offs. The strongest patterns here are productized &mdash; fixed scope, installed in your stack, and <em>yours to keep</em> when I'm done.</p>
+      <a href="https://leverage.mattbis.com" target="_blank" rel="noopener" class="sys-cta-link">See how it works <span class="arr" aria-hidden="true">&#8599;</span></a>
     </div>
   </div>
 </section>
