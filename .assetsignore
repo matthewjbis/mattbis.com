@@ -1,0 +1,3 @@
+# Files in the repo root that should NOT be published as static assets.
+wrangler.toml
+.assetsignore
