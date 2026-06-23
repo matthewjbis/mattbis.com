@@ -1,0 +1,14 @@
+# Cloudflare Worker (static assets) configuration for mattbis.com.
+#
+# The Worker's deploy command is `npx wrangler deploy`, which REQUIRES this file.
+# It was missing, so every Git-triggered build failed and the live site stayed
+# frozen on the last successful deploy. Values mirror the existing Worker
+# settings in the Cloudflare dashboard (name / compatibility date / flags).
+name = "mattbiscom"
+compatibility_date = "2026-06-14"
+compatibility_flags = ["nodejs_compat"]
+
+# Serve the repository root as a static-assets-only Worker (no JS entrypoint).
+# Wrangler automatically excludes the config file, .git, and node_modules.
+[assets]
+directory = "./"
