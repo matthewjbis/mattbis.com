@@ -247,6 +247,7 @@ nav .links > a.active{color:var(--ink)}
 .drawer.open a:nth-child(5){transition-delay:.32s}
 .drawer.open a:nth-child(6){transition-delay:.38s}
 .drawer.open a:nth-child(7){transition-delay:.44s}
+.drawer.open a:nth-child(8){transition-delay:.50s}
 .drawer .foot{margin-top:auto;font-family:var(--mono);font-size:11px;
   color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;
   display:flex;flex-direction:column;gap:8px;padding-top:32px}
@@ -623,6 +624,30 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
   .sys-cta{padding-top:40px;gap:18px}
 }
 
+/* ─── LAHJAT (public, playable build) ─────────────── */
+.lahjat{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lahjat-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:44px}
+@media(max-width:860px){.lahjat-grid{grid-template-columns:1fr;gap:36px}}
+.lahjat-copy .lead{font-family:var(--display);font-weight:400;
+  font-size:clamp(1.25rem,2.6vw,1.7rem);line-height:1.32;letter-spacing:-.015em;
+  color:var(--ink);max-width:26ch;margin-bottom:22px}
+.lahjat-copy .lead em{font-style:normal;color:var(--accent)}
+.lahjat-copy p{color:var(--ink-soft);font-size:1.05rem;line-height:1.62;margin-bottom:16px;max-width:54ch}
+.lahjat-copy .tags{margin-top:22px}
+.lahjat-play{margin-top:26px;display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--accent);color:#fff;text-decoration:none;
+  padding:15px 26px;border-radius:2px;min-height:50px;
+  transition:background .25s,transform .15s var(--easing)}
+.lahjat-play:hover{background:var(--accent-hover)}
+.lahjat-play:active{transform:scale(.98)}
+.lahjat-visual{display:block;border:1px solid var(--line);border-radius:3px;overflow:hidden;
+  background:var(--bg);box-shadow:0 8px 28px var(--shadow);
+  transition:border-color .3s var(--easing),transform .35s var(--easing)}
+@media(hover:hover){.lahjat-visual:hover{border-color:var(--ink-soft);transform:translateY(-3px)}}
+.lahjat-visual svg,.lahjat-visual img{width:100%;height:auto;display:block}
+.lahjat-cap{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-faint);margin-top:14px}
+
 /* ─── NEWSLETTER ──────────────────────────────────── */
 .news{background:var(--ink);color:var(--paper)}
 .news .wrap{padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(72px,10vw,120px)}
@@ -712,6 +737,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     <a href="#systems">Systems</a>
     <a href="#patterns">Patterns</a>
     <a href="#approach">Approach</a>
+    <a href="#lahjat">Lahjat</a>
     <a href="#signal">Newsletter</a>
     <a href="https://blog.mattbis.com" target="_blank" rel="noopener">Blog&nbsp;&#8599;</a>
     <a href="https://leverage.mattbis.com" target="_blank" rel="noopener">Leverage&nbsp;&#8599;</a>
@@ -735,7 +761,8 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   <a href="#systems" data-nav><span>Systems</span><span class="n">02</span></a>
   <a href="#patterns" data-nav><span>Patterns</span><span class="n">03</span></a>
   <a href="#approach" data-nav><span>Approach</span><span class="n">04</span></a>
-  <a href="#signal" data-nav><span>Newsletter</span><span class="n">05</span></a>
+  <a href="#lahjat" data-nav><span>Lahjat</span><span class="n">05</span></a>
+  <a href="#signal" data-nav><span>Newsletter</span><span class="n">06</span></a>
   <a href="https://blog.mattbis.com" target="_blank" rel="noopener" data-nav><span>Blog</span><span class="n">&#8599;</span></a>
   <a href="https://leverage.mattbis.com" target="_blank" rel="noopener" data-nav><span>Leverage</span><span class="n">&#8599;</span></a>
   <div class="foot">
@@ -968,6 +995,96 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     <div class="sys-cta reveal">
       <p>These aren't one-offs. The strongest patterns here are productized &mdash; fixed scope, installed in your stack, and <em>yours to keep</em> when I'm done.</p>
       <a href="https://leverage.mattbis.com" target="_blank" rel="noopener" class="sys-cta-link">See how it works <span class="arr" aria-hidden="true">&#8599;</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LAHJAT (public, playable build) ===== -->
+<section id="lahjat" class="lahjat">
+  <div class="wrap reveal r-head">
+    <div class="sec-label">A build with my name on it</div>
+    <h2 class="sec-head">Everything above is anonymized. This one you can play.</h2>
+    <p class="sec-intro">Client work stays behind the curtain. Lahjat doesn't. It's a side project I designed and shipped end to end, and it's the clearest thing I can point to when I say the linguistics training is the edge, not the trivia.</p>
+
+    <div class="lahjat-grid reveal r-stagger">
+      <div class="lahjat-copy">
+        <p class="lead">A GeoGuessr for Arabic speech. Hear a clip, drop a pin, find out <em>where the voice is from.</em></p>
+        <p>The interesting decision is in the scoring. Arabic dialects don't follow national borders, so the data model doesn't either. Cities sit in roughly 37 linguistically motivated clusters, so guessing Mosul for an Aleppo clip scores better than guessing Baghdad, even though Baghdad is closer on the map, because Mosul and Aleppo share <em>qeltu</em> features Baghdad lacks. Geography is the obvious model. It's also the wrong one.</p>
+        <p>Every guess feeds an accuracy-weighted, crowd-tagged corpus of dialect audio as a byproduct. The thing teaches while it collects.</p>
+        <div class="tags">
+          <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Mapbox</span><span class="tag">Whisper</span><span class="tag">Claude</span><span class="tag">Vercel</span>
+        </div>
+        <a class="lahjat-play" href="https://www.lahjat.app" target="_blank" rel="noopener">Play Lahjat&nbsp;&#8599;</a>
+      </div>
+      <div>
+        <!--
+          PREVIEW IMAGE: this is an on-brand placeholder so the section renders
+          with no missing assets. Swap it for a real screenshot of the game when
+          you have one — drop the file at /lahjat-preview.png and replace the
+          <a class="lahjat-visual"> block below with:
+
+          <a class="lahjat-visual" href="https://www.lahjat.app" target="_blank" rel="noopener" aria-label="Open Lahjat">
+            <img src="/lahjat-preview.png" alt="Lahjat — guessing screen for Arabic dialect audio on a map" width="1200" height="800" loading="lazy">
+          </a>
+        -->
+        <a class="lahjat-visual" href="https://www.lahjat.app" target="_blank" rel="noopener" aria-label="Open Lahjat">
+          <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lahjat — drop a pin on a map to guess an Arabic dialect from an audio clip">
+            <rect width="600" height="420" fill="#faf8f3"/>
+            <!-- map area -->
+            <rect x="0" y="0" width="600" height="340" fill="#f4f1ea"/>
+            <!-- abstract landmass -->
+            <path d="M60 118 Q170 64 268 104 T 478 128 L 524 200 Q 470 252 380 240 T 176 250 Q 88 218 60 158 Z" fill="#faf8f3" stroke="#d8d2c6" stroke-width="1.5"/>
+            <!-- dialect cluster dots (muted) -->
+            <circle cx="150" cy="150" r="5" fill="#6e6557" opacity=".5"/>
+            <circle cx="222" cy="124" r="5" fill="#6e6557" opacity=".5"/>
+            <circle cx="318" cy="168" r="5" fill="#6e6557" opacity=".5"/>
+            <circle cx="392" cy="138" r="5" fill="#6e6557" opacity=".5"/>
+            <circle cx="448" cy="196" r="5" fill="#6e6557" opacity=".5"/>
+            <!-- dropped accent pin -->
+            <line x1="272" y1="206" x2="272" y2="150" stroke="#b5341f" stroke-width="2" stroke-dasharray="3 4"/>
+            <circle cx="272" cy="206" r="9" fill="#b5341f"/>
+            <circle cx="272" cy="206" r="3.2" fill="#faf8f3"/>
+            <!-- divider -->
+            <line x1="0" y1="340" x2="600" y2="340" stroke="#d8d2c6" stroke-width="1"/>
+            <!-- audio band -->
+            <rect x="0" y="340" width="600" height="80" fill="#faf8f3"/>
+            <!-- play button -->
+            <circle cx="48" cy="380" r="17" fill="#1a1714"/>
+            <polygon points="42,372 42,388 55,380" fill="#faf8f3"/>
+            <!-- waveform -->
+            <g fill="#6e6557">
+              <rect x="92"  y="375" width="4" height="10" rx="2" opacity=".45"/>
+              <rect x="106" y="371" width="4" height="18" rx="2" opacity=".45"/>
+              <rect x="120" y="367" width="4" height="26" rx="2" opacity=".45"/>
+              <rect x="134" y="372" width="4" height="16" rx="2" opacity=".45"/>
+              <rect x="148" y="369" width="4" height="22" rx="2" opacity=".45"/>
+              <rect x="162" y="365" width="4" height="30" rx="2" opacity=".45"/>
+              <rect x="176" y="373" width="4" height="14" rx="2" opacity=".45"/>
+              <rect x="190" y="370" width="4" height="20" rx="2" opacity=".45"/>
+              <rect x="204" y="366" width="4" height="28" rx="2" opacity=".45"/>
+              <rect x="218" y="374" width="4" height="12" rx="2" opacity=".45"/>
+              <rect x="232" y="368" width="4" height="24" rx="2" opacity=".45"/>
+              <rect x="246" y="371" width="4" height="18" rx="2" opacity=".45"/>
+              <rect x="260" y="364" width="4" height="32" rx="2" fill="#b5341f" opacity=".9"/>
+              <rect x="274" y="372" width="4" height="16" rx="2" fill="#b5341f" opacity=".9"/>
+              <rect x="288" y="369" width="4" height="22" rx="2" fill="#b5341f" opacity=".9"/>
+              <rect x="302" y="366" width="4" height="28" rx="2" opacity=".45"/>
+              <rect x="316" y="373" width="4" height="14" rx="2" opacity=".45"/>
+              <rect x="330" y="370" width="4" height="20" rx="2" opacity=".45"/>
+              <rect x="344" y="367" width="4" height="26" rx="2" opacity=".45"/>
+              <rect x="358" y="374" width="4" height="12" rx="2" opacity=".45"/>
+              <rect x="372" y="368" width="4" height="24" rx="2" opacity=".45"/>
+              <rect x="386" y="371" width="4" height="18" rx="2" opacity=".45"/>
+              <rect x="400" y="365" width="4" height="30" rx="2" opacity=".45"/>
+              <rect x="414" y="372" width="4" height="16" rx="2" opacity=".45"/>
+              <rect x="428" y="369" width="4" height="22" rx="2" opacity=".45"/>
+              <rect x="442" y="374" width="4" height="12" rx="2" opacity=".45"/>
+            </g>
+            <text x="570" y="384" text-anchor="end" font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" letter-spacing="1" fill="#6e6557">lahjat.app</text>
+          </svg>
+        </a>
+        <div class="lahjat-cap">lahjat.app — live, playable, and mine.</div>
+      </div>
     </div>
   </div>
 </section>
