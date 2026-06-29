@@ -285,7 +285,7 @@ h1{
   font-weight:500;
   font-size:clamp(2.4rem,7.5vw,5.6rem);
   line-height:1.04;letter-spacing:-.03em;
-  margin-bottom:34px;max-width:15ch;
+  margin-bottom:34px;max-width:none;
 }
 @media(max-width:640px){
   h1{line-height:1.06;margin-bottom:26px;max-width:none}
@@ -295,6 +295,20 @@ h1 .l:nth-child(1){animation-delay:.2s}
 h1 .l:nth-child(2){animation-delay:.32s}
 h1 .l:nth-child(3){animation-delay:.44s}
 h1 em{font-style:normal;color:var(--accent)}
+
+/* RAND substantiation line — sits between H1 and lede */
+.hero-stat{
+  font-family:var(--mono);font-size:13px;letter-spacing:.03em;
+  color:var(--ink-faint);line-height:1.5;
+  margin-top:-10px;margin-bottom:30px;max-width:48ch;
+  display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  opacity:0;animation:rise 1s .5s forwards;
+}
+.hero-stat .src{
+  color:var(--accent);letter-spacing:.1em;text-transform:uppercase;
+  font-size:10.5px;white-space:nowrap;
+}
+@media(max-width:640px){.hero-stat{font-size:12px;margin-top:-4px;margin-bottom:24px;gap:8px}}
 
 .lede{
   font-size:clamp(1.12rem,2.2vw,1.5rem);
@@ -314,6 +328,10 @@ h1 em{font-style:normal;color:var(--accent)}
 }
 .meta-row span{display:flex;align-items:center;gap:9px}
 .meta-row span::before{content:"";width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.meta-row a{color:var(--ink-soft);text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:2px;
+  transition:color .25s var(--easing),border-color .25s var(--easing)}
+.meta-row a:hover{color:var(--accent);border-color:var(--accent)}
 
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
@@ -722,7 +740,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   .reveal,.r-head .sec-label,.r-head .sec-head,.r-head .sec-intro,.r-stagger > *{
     opacity:1 !important;transform:none !important;
   }
-  .eyebrow,h1 .l,.lede,.meta-row{opacity:1 !important;animation:none !important}
+  .eyebrow,h1 .l,.lede,.meta-row,.hero-stat{opacity:1 !important;animation:none !important}
 }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -783,17 +801,18 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 
 <header id="top">
   <div class="wrap">
-    <div class="eyebrow">Chicago, IL — AI Automation & GTM Engineering</div>
+    <div class="eyebrow">Chicago, IL · AI Automation & GTM Engineering</div>
     <h1>
-      <span class="l">AI is powerful.</span>
-      <span class="l">I make it <em>useful</em></span>
-      <span class="l">for the work in front of you.</span>
+      <span class="l">Most AI projects die</span>
+      <span class="l">in production.</span>
+      <span class="l"><em>Mine don't.</em></span>
     </h1>
-    <p class="lede">There's a gap between a demo that wows a room and a system someone trusts on a Tuesday morning. I work in that gap. I build automation that keeps running on real data long after the flashy version would have fallen over.</p>
+    <p class="hero-stat">More than 80% of AI projects never reach production. <span class="src">RAND, 2024</span></p>
+    <p class="lede">150+ in production, still running. The demo is the easy part. What kills most systems is everything after: real data, real volume, the edge cases a demo never sees. I build for that part: the dedup, the guardrails, the failure handling nobody films, the work that decides whether something survives week two.</p>
     <div class="meta-row">
-      <span>150+ systems shipped to production</span>
-      <span>Linguist by training</span>
-      <span>Builder by practice</span>
+      <span><a href="https://www.lahjat.app/?utm_source=mattbis.com&amp;utm_medium=referral&amp;utm_campaign=portfolio_hero" target="_blank" rel="noopener">Lahjat: live and playable &#8599;</a></span>
+      <span><a href="https://github.com/matthewjbis/context-kit" target="_blank" rel="noopener">context-kit: clone and run &#8599;</a></span>
+      <span>~60s: a sentence to a live, deduped campaign</span>
     </div>
   </div>
 </header>
@@ -803,7 +822,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 <section id="thesis">
   <div class="wrap reveal">
     <div class="sec-label">The premise</div>
-    <p class="thesis">The model was never the hard part. The hard part is figuring out what one person does all day, then building something that does it for them and keeps doing it when nobody's watching.
+    <p class="thesis">The model stopped being the hard part a while ago. The hard part is figuring out what one person does all day, then building something that does it for them and keeps doing it long after launch.
       <span class="small">I came to this through linguistics: the study of how meaning gets built and how it quietly falls apart. That's the same problem as making an AI system behave. Precise language in, predictable behavior out. Which is why the scarce skill isn't writing code. Plenty of people write code. The scarce skill is taste: knowing what to build, what to keep boring and deterministic, and what to leave alone. Most of my best decisions were things I talked someone out of.</span>
     </p>
   </div>
@@ -1208,7 +1227,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     ["n8n","M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"],
     ["TypeScript","M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"],
     ["Salesforce","m38.33,6.98c2.95-3.07,7.05-4.98,11.59-4.98,6.04,0,11.3,3.37,14.11,8.36,2.44-1.09,5.14-1.7,7.97-1.7,10.89,0,19.71,8.9,19.71,19.89s-8.83,19.89-19.71,19.89c-1.33,0-2.63-.13-3.88-.39-2.47,4.4-7.18,7.38-12.58,7.38-2.26,0-4.4-.52-6.3-1.45-2.5,5.89-8.34,10.02-15.13,10.02s-13.11-4.48-15.43-10.76c-1.01.21-2.06.33-3.14.33-8.43,0-15.26-6.9-15.26-15.42,0-5.71,3.07-10.69,7.63-13.36-.94-2.16-1.46-4.55-1.46-7.05C6.45,7.94,14.4,0,24.21,0,29.97,0,35.09,2.74,38.33,6.98Z","0 0 92 64"],
-    ["Claude","m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"],
+    ["Claude","m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L4.7144.1335 4.7144 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"],
     ["OpenRouter","M16.778 1.844v1.919q-.569-.026-1.138-.032-.708-.008-1.415.037c-1.93.126-4.023.728-6.149 2.237-2.911 2.066-2.731 1.95-4.14 2.75-.396.223-1.342.574-2.185.798-.841.225-1.753.333-1.751.333v4.229s.768.108 1.61.333c.842.224 1.789.575 2.185.799 1.41.798 1.228.683 4.14 2.75 2.126 1.509 4.22 2.11 6.148 2.236.88.058 1.716.041 2.555.005v1.918l7.222-4.168-7.222-4.17v2.176c-.86.038-1.611.065-2.278.021-1.364-.09-2.417-.357-3.979-1.465-2.244-1.593-2.866-2.027-3.68-2.508.889-.518 1.449-.906 3.822-2.59 1.56-1.109 2.614-1.377 3.978-1.466.667-.044 1.418-.017 2.278.02v2.176L24 6.014Z"],
     ["Supabase","M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C-.33 13.427.65 15.455 2.409 15.455h9.579l.113 7.51c.014.985 1.259 1.408 1.873.636l9.262-11.653c1.093-1.375.113-3.403-1.645-3.403h-9.642z"],
     ["LangChain","M13.796 0a6.93 6.93 0 0 0-4.91 2.019L5.451 5.455l3.273 3.27 3.432-3.432a2.284 2.284 0 0 1 3.277 0 2.28 2.28 0 0 1 0 3.275L12 12.001l3.273 3.273 3.433-3.435c2.692-2.692 2.692-7.127 0-9.82A6.92 6.92 0 0 0 13.796 0m-5.07 8.728-3.433 3.434c-2.692 2.693-2.692 7.126 0 9.819A6.92 6.92 0 0 0 10.203 24a6.93 6.93 0 0 0 4.911-2.02l3.432-3.432-3.271-3.272-3.433 3.433a2.284 2.284 0 0 1-3.277 0 2.28 2.28 0 0 1 0-3.276L12 12z"],
