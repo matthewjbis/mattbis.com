@@ -79,7 +79,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f4f1ea;
@@ -92,7 +92,7 @@
   --accent-hover:#9c2c1a;
   --paper:#faf8f3;
   --shadow:rgba(26,23,20,.08);
-  --display:'Space Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;
+  --display:'Instrument Sans',-apple-system,BlinkMacSystemFont,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --serif:'Newsreader',Georgia,serif;
   --focus:0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
@@ -147,7 +147,8 @@ nav{
 nav.scrolled{border-bottom-color:var(--line)}
 @media(max-width:640px){nav{padding:14px 22px}}
 nav .brand{font-weight:500;color:var(--ink);text-decoration:none;
-  padding:8px 0;display:inline-block}
+  padding:8px 0;display:inline-flex;align-items:center;gap:9px}
+nav .brand .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
 nav .links{display:flex;gap:6px;align-items:center}
 nav .links > a{color:var(--ink-soft);text-decoration:none;
   padding:10px 14px;transition:color .25s,background .25s;border-radius:2px}
@@ -299,7 +300,7 @@ h1 em{font-style:normal;color:var(--accent)}
 /* RAND substantiation line — sits between H1 and lede */
 .hero-stat{
   font-family:var(--mono);font-size:13px;letter-spacing:.03em;
-  color:var(--ink-faint);line-height:1.5;
+  color:var(--ink-soft);font-weight:500;line-height:1.5;
   margin-top:-10px;margin-bottom:30px;max-width:48ch;
   display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
   opacity:0;animation:rise 1s .5s forwards;
@@ -341,10 +342,10 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
 
 .sec-label{
   font-family:var(--mono);font-size:12px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
   margin-bottom:16px;display:flex;align-items:center;gap:12px;
 }
-.sec-label::before{content:"";width:24px;height:1px;background:var(--ink-faint);display:inline-block}
+.sec-label::before{content:"";width:24px;height:1px;background:var(--accent);display:inline-block}
 @media(max-width:640px){.sec-label{font-size:11px;margin-bottom:14px}}
 
 .sec-head{
@@ -510,7 +511,7 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
 }
 .stack-strip .sec-label{justify-content:center;margin-bottom:34px}
 .stack-strip .sec-label::before,
-.stack-strip .sec-label::after{content:"";width:24px;height:1px;background:var(--ink-faint);display:inline-block}
+.stack-strip .sec-label::after{content:"";width:24px;height:1px;background:var(--accent);display:inline-block}
 @media(max-width:640px){.stack-strip{padding:48px 0}.stack-strip .sec-label{margin-bottom:26px}}
 
 .marquee{
@@ -757,7 +758,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 <a class="skip" href="#main">Skip to content</a>
 
 <nav>
-  <a href="#top" class="brand">Matthew&nbsp;Bis</a>
+  <a href="#top" class="brand"><span class="dot" aria-hidden="true"></span>Matthew&nbsp;Bis</a>
   <span class="links">
     <a href="#work">Work</a>
     <a href="#patterns">Patterns</a>
@@ -766,6 +767,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     <a href="#lahjat">Lahjat</a>
     <a href="#signal">Newsletter</a>
     <a href="https://blog.mattbis.com" target="_blank" rel="noopener">Blog&nbsp;&#8599;</a>
+    <a href="#work-with-me">Work&nbsp;with&nbsp;me&nbsp;&rarr;</a>
     <span class="dropdown" id="contactDropdown">
       <button type="button" class="dropdown-toggle" id="contactToggle" aria-haspopup="true" aria-expanded="false" aria-controls="contactMenu">
         Contact<span class="caret" aria-hidden="true"></span>
@@ -789,6 +791,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   <a href="#lahjat" data-nav><span>Lahjat</span><span class="n">05</span></a>
   <a href="#signal" data-nav><span>Newsletter</span><span class="n">06</span></a>
   <a href="https://blog.mattbis.com" target="_blank" rel="noopener" data-nav><span>Blog</span><span class="n">&#8599;</span></a>
+  <a href="#work-with-me" data-nav><span>Work with me</span><span class="n">&rarr;</span></a>
   <div class="foot">
     <span>Chicago, IL</span>
     <a href="mailto:matthewjbis@gmail.com" data-nav>matthewjbis@gmail.com</a>
@@ -855,7 +858,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
         <div class="work-num">03</div>
         <div>
           <h3>Language & Structure</h3>
-          <p>Trained in linguistics with a phonetics specialization. Fluent in German, grinding toward C1 Arabic, conversational Spanish. People treat this as a fun fact. It's the actual edge: the difference between real work and confident-sounding nonsense is how precisely you can say what you mean.</p>
+          <p>The quality of what comes out of an AI system is bounded by the precision of what goes in. That's a linguistics problem before it's an engineering one — and it's where most implementations quietly bleed. (Trained linguist. Phonetics specialization. Fluent in German, C1 Arabic in progress.)</p>
           <div class="tags"><span class="tag">Linguistics</span><span class="tag">Phonetics / IPA</span><span class="tag">Prompt architecture</span></div>
           <div class="lang-boxes">
             <div class="lang-box">
@@ -1019,10 +1022,15 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
       </div>
 
     </div>
-    <div class="sys-cta reveal">
-      <p>These aren't one-offs. The strongest patterns here are productized &mdash; fixed scope, installed in your stack, and <em>yours to keep</em> when I'm done.</p>
-      <a href="https://leverage.mattbis.com" target="_blank" rel="noopener" class="sys-cta-link">See how it works <span class="arr" aria-hidden="true">&#8599;</span></a>
-    </div>
+  </div>
+</section>
+
+<section id="work-with-me">
+  <div class="wrap reveal r-head">
+    <div class="sec-label">Work with me</div>
+    <h2 class="sec-head">Working together</h2>
+    <p class="sec-intro">I take a small number of engagements. The work is project-based: a fixed scope, a shipped system, and full documentation so you own what we build. If you're running a B2B sales or marketing motion and the top of your funnel is manual, expensive, or both &mdash; that's the problem I solve.</p>
+    <a href="https://leverage.mattbis.com" target="_blank" rel="noopener" class="sys-cta-link">Start with the pipeline diagnostic <span class="arr" aria-hidden="true">&#8599;</span></a>
   </div>
 </section>
 
