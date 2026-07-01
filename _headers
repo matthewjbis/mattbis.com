@@ -1,0 +1,21 @@
+# Processed by Cloudflare Workers static assets; this file itself is never served.
+# HTML intentionally keeps the platform default (max-age=0, must-revalidate).
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Unfingerprinted images — cache for a week; bump the filename if one ever changes.
+/favicon.ico
+  Cache-Control: public, max-age=604800
+/favicon-16.png
+  Cache-Control: public, max-age=604800
+/favicon-32.png
+  Cache-Control: public, max-age=604800
+/favicon-180.png
+  Cache-Control: public, max-age=604800
+/og-image.png
+  Cache-Control: public, max-age=604800

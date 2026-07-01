@@ -12,3 +12,5 @@ compatibility_flags = ["nodejs_compat"]
 # Wrangler automatically excludes the config file, .git, and node_modules.
 [assets]
 directory = "./"
+# Serve /404.html (with a 404 status) for paths that don't match an asset.
+not_found_handling = "404-page"

@@ -1,0 +1,2 @@
+# Canonical host: send www to the apex.
+https://www.mattbis.com/* https://mattbis.com/:splat 301

@@ -225,10 +225,10 @@ nav .links > a.active{color:var(--ink)}
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
   overscroll-behavior:contain;
-  transform:translateY(-2%);opacity:0;pointer-events:none;
-  transition:opacity .3s var(--easing),transform .4s var(--easing);
+  transform:translateY(-2%);opacity:0;pointer-events:none;visibility:hidden;
+  transition:opacity .3s var(--easing),transform .4s var(--easing),visibility .4s;
 }
-.drawer.open{opacity:1;transform:none;pointer-events:auto}
+.drawer.open{opacity:1;transform:none;pointer-events:auto;visibility:visible}
 .drawer a{
   font-family:var(--display);font-size:2.1rem;font-weight:500;
   color:var(--ink);text-decoration:none;letter-spacing:-.02em;
@@ -686,7 +686,7 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
 .form input{flex:1;min-width:0;background:transparent;border:0;
   color:var(--paper);font-family:var(--serif);font-size:1.1rem;
   padding:14px 2px;outline:none;}
-.form input::placeholder{color:#7d766c}
+.form input::placeholder{color:#8f887c}
 .form button{font-family:var(--mono);font-size:12px;letter-spacing:.1em;
   text-transform:uppercase;background:var(--accent);color:#fff;border:0;
   padding:14px 26px;cursor:pointer;border-radius:2px;
@@ -703,7 +703,7 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
   .form button{width:100%;padding:16px 26px;min-height:52px}
 }
 
-.form-note{font-family:var(--mono);font-size:11px;color:#7d766c;
+.form-note{font-family:var(--mono);font-size:11px;color:#8f887c;  /* was #7d766c — now passes AA on the dark panel */
   letter-spacing:.04em;margin-top:18px}
 .form-msg{color:#e8a08d;font-family:var(--mono);font-size:12px;margin-top:18px;
   min-height:18px;letter-spacing:.04em;
@@ -769,12 +769,12 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     <a href="https://blog.mattbis.com" target="_blank" rel="noopener">Blog&nbsp;&#8599;</a>
     <a href="#work-with-me">Work&nbsp;with&nbsp;me&nbsp;&rarr;</a>
     <span class="dropdown" id="contactDropdown">
-      <button type="button" class="dropdown-toggle" id="contactToggle" aria-haspopup="true" aria-expanded="false" aria-controls="contactMenu">
+      <button type="button" class="dropdown-toggle" id="contactToggle" aria-expanded="false" aria-controls="contactMenu">
         Contact<span class="caret" aria-hidden="true"></span>
       </button>
-      <span class="dropdown-menu" id="contactMenu" role="menu">
-        <a href="mailto:matthewjbis@gmail.com" role="menuitem"><span class="dot" aria-hidden="true"></span>Email</a>
-        <a href="https://www.linkedin.com/in/matthewjbis/" target="_blank" rel="noopener" role="menuitem"><span class="dot" aria-hidden="true"></span>LinkedIn ↗</a>
+      <span class="dropdown-menu" id="contactMenu">
+        <a href="mailto:matthewjbis@gmail.com"><span class="dot" aria-hidden="true"></span>Email</a>
+        <a href="https://www.linkedin.com/in/matthewjbis/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>LinkedIn ↗</a>
       </span>
     </span>
   </span>
@@ -1255,7 +1255,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
       var item = document.createElement('div');
       item.className = 'marquee-item';
       var vb = ic[2] || '0 0 24 24';
-      var svg = '<svg viewBox="'+vb+'" role="img" aria-label="'+ic[0]+'" focusable="false"><path d="'+ic[1]+'"/></svg>';
+      var svg = '<svg viewBox="'+vb+'" aria-hidden="true" focusable="false"><path d="'+ic[1]+'"/></svg>';
       item.innerHTML = svg + '<span>'+ic[0]+'</span>';
       track.appendChild(item);
     });

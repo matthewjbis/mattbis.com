@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 | Matthew Bis</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f4f1ea">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<style>
+:root{--bg:#f4f1ea;--ink:#1a1714;--ink-soft:#4a443c;--ink-faint:#6e6557;--line:#d8d2c6;--accent:#b5341f}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:19px;line-height:1.65;
+  min-height:100vh;min-height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  padding:22px;-webkit-font-smoothing:antialiased;
+}
+main{max-width:560px}
+.eyebrow{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:26px;
+  display:flex;align-items:center;gap:12px;
+}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--accent)}
+h1{
+  font-family:-apple-system,BlinkMacSystemFont,'Instrument Sans',sans-serif;
+  font-weight:500;font-size:clamp(1.9rem,6vw,3rem);
+  line-height:1.1;letter-spacing:-.02em;margin-bottom:20px;
+}
+p{color:var(--ink-soft);max-width:44ch;margin-bottom:34px}
+a{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--accent);text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:3px;
+  transition:border-color .25s;
+}
+a:hover{border-color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">404 &middot; Not found</div>
+  <h1>Nothing lives at this address.</h1>
+  <p>The page you're after either moved or never shipped. Everything worth reading is on the front page.</p>
+  <a href="/">Back to mattbis.com &rarr;</a>
+</main>
+</body>
+</html>
