@@ -600,6 +600,12 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
 /* surface = one area of the GTM stack; holds a lead system + its siblings */
 .surface{border-top:1px solid var(--line);padding-top:34px}
 .surface:last-child{border-bottom:1px solid var(--line)}
+/* The systems list closes on a hairline, so it does not also need a full
+   section's worth of padding under it. Without this the gap into Work with me
+   runs ~325px against ~280px at every other section boundary, because this is
+   the only section that stacks .also padding and a closing border on top of
+   the standard padding. */
+#systems{padding-bottom:clamp(44px,7.5vw,96px)}
 .surface-head{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:baseline}
 @media(max-width:760px){.surface-head{grid-template-columns:1fr;gap:12px}}
 .surface-name{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.14em;
