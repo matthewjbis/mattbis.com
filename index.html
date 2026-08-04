@@ -1216,15 +1216,56 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   'use strict';
 
   // ─── scroll reveal ──────────────────────────────
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        io.unobserve(e.target);
+  // Everything with .reveal starts at opacity 0 and is shown by adding .in, so
+  // whatever decides to add .in is load-bearing: if it never fires, the section
+  // is invisible, not merely un-animated.
+  //
+  // This previously used IntersectionObserver with {threshold:.15}, which is
+  // ELEMENT-relative: the element must expose 15% of its OWN height at once.
+  // Any block taller than viewport/0.15 can never do that, so it never
+  // revealed. The Systems section crossed that line when it grew to ~4900px,
+  // which requires a 734px viewport; below that the whole section rendered
+  // blank. The old 3067px height only needed 460px, so the bug was latent.
+  //
+  // Replaced with a plain geometry test. An element reveals when any part of it
+  // is inside the viewport. There is no ratio, so element height cannot defeat
+  // it — the failure mode is structurally gone rather than tuned away.
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+
+  function show(el){ el.classList.add('in'); }
+
+  function sweep(){
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    for(var i = reveals.length - 1; i >= 0; i--){
+      var el = reveals[i], r = el.getBoundingClientRect();
+      if(r.top < vh * 0.88 && r.bottom > 0){
+        show(el);
+        reveals.splice(i, 1);
       }
-    });
-  },{threshold:.15, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    }
+    if(!reveals.length && sweep.off) sweep.off();
+  }
+
+  // Throttled by timestamp rather than requestAnimationFrame: the sweep must
+  // run even if a frame is never scheduled. At most ~13 getBoundingClientRect
+  // calls, ten times a second, shrinking as elements are revealed and removed.
+  var last = 0;
+  function onScroll(){
+    var now = Date.now();
+    if(now - last < 100) return;
+    last = now;
+    sweep();
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  sweep.off = function(){
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+  };
+
+  sweep();
+  // Re-sweep once webfonts and images have settled the layout.
+  window.addEventListener('load', function(){ last = 0; sweep(); });
 
   // ─── contact dropdown ───────────────────────────
   var dd = document.getElementById('contactDropdown');
