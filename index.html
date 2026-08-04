@@ -784,6 +784,67 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   }
   .eyebrow,h1 .l,.lede,.meta-row,.hero-stat{opacity:1 !important;animation:none !important}
 }
+
+/* ─── FINGERPRINT (live demo) ──────────────────────── */
+/* Every selector here is namespaced under .fp. Nothing above is modified. */
+.fp-form{display:flex;gap:10px;margin-top:34px;max-width:560px;flex-wrap:wrap;align-items:stretch}
+.fp-form input{
+  flex:1;min-width:0;background:var(--paper);border:1px solid var(--line);
+  border-radius:2px;color:var(--ink);font-family:var(--mono);font-size:14px;
+  padding:14px 16px;outline:none;transition:border-color .25s;
+}
+.fp-form input:focus{border-color:var(--accent)}
+.fp-form input::placeholder{color:var(--ink-faint)}
+.fp-form button{
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--accent);color:#fff;border:0;padding:14px 24px;cursor:pointer;
+  border-radius:2px;min-height:48px;flex-shrink:0;
+  transition:background .25s,transform .15s var(--easing);
+}
+.fp-form button:hover{background:var(--accent-hover)}
+.fp-form button:active{transform:scale(.98)}
+.fp-form button[disabled]{background:#b9ada3;cursor:not-allowed;transform:none}
+@media(max-width:560px){
+  .fp-form{flex-direction:column}
+  .fp-form button{width:100%}
+}
+.fp-note{font-family:var(--mono);font-size:11px;color:var(--ink-faint);
+  letter-spacing:.03em;margin-top:14px;line-height:1.6}
+.fp-msg{font-family:var(--mono);font-size:12px;color:var(--accent);
+  margin-top:14px;min-height:16px;letter-spacing:.03em}
+
+.fp-card{
+  margin-top:34px;border:1px solid var(--line);background:var(--paper);
+  border-radius:3px;overflow:hidden;
+}
+.fp-card-head{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:16px 22px;border-bottom:1px solid var(--line);flex-wrap:wrap;
+}
+.fp-domain{font-family:var(--display);font-weight:600;font-size:1.1rem;letter-spacing:-.01em}
+.fp-timing{font-family:var(--mono);font-size:11px;color:var(--ink-faint);letter-spacing:.06em;
+  text-transform:uppercase;white-space:nowrap}
+.fp-rows{display:block}
+.fp-row{
+  display:grid;grid-template-columns:180px 1fr;gap:20px;
+  padding:13px 22px;border-bottom:1px dashed var(--line);align-items:baseline;
+}
+.fp-row:last-child{border-bottom:0}
+.fp-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.fp-v{font-size:.98rem;color:var(--ink-soft);line-height:1.5}
+.fp-v .none{color:var(--ink-faint)}
+@media(max-width:640px){
+  .fp-row{grid-template-columns:1fr;gap:5px;padding:12px 16px}
+  .fp-card-head{padding:14px 16px}
+}
+.fp-pill{
+  display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.02em;
+  border:1px solid var(--line);color:var(--ink-soft);background:var(--bg);
+  padding:4px 9px;border-radius:2px;margin:0 6px 6px 0;
+}
+.fp-pill.hot{border-color:var(--accent);color:var(--accent)}
+.fp-card.busy{opacity:.5;transition:opacity .2s}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8ST20WHQV"></script>
@@ -793,6 +854,11 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   gtag('js', new Date());
   gtag('config', 'G-J8ST20WHQV');
 </script>
+<noscript><style>
+/* With scripting off nothing ever adds .in, so every .reveal block would stay
+   at opacity 0 and the page would render blank below the hero. Show it all. */
+.reveal,.r-head .sec-label,.r-head .sec-head,.r-head .sec-intro,.r-stagger > *{opacity:1!important;transform:none!important}
+</style></noscript>
 </head>
 <body>
 
@@ -1133,6 +1199,40 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   </div>
 </section>
 
+<!-- ===== LIVE DEMO: domain fingerprint ===== -->
+<section id="fingerprint">
+  <div class="wrap reveal r-head">
+    <div class="sec-label">Live demo</div>
+    <h2 class="sec-head">Paste a domain. See what public data already says about it.</h2>
+    <p class="sec-intro">This runs on my own n8n instance. It reads public DNS and fetches one page, then tells you who handles their mail, what actually sends on their behalf, whether they take deliverability seriously, and what is loaded on their homepage. No paid data providers, no enrichment credits, no model calls.</p>
+
+    <form class="fp-form" id="fpForm" novalidate>
+      <input type="text" id="fpInput" placeholder="stripe.com" aria-label="Domain to fingerprint" autocomplete="off" spellcheck="false">
+      <button type="submit" id="fpGo">Fingerprint it</button>
+    </form>
+    <div class="fp-msg" id="fpMsg" role="status" aria-live="polite"></div>
+
+    <!-- Rendered server-side from a real run so the section is complete with
+         JavaScript disabled, and stays complete if the n8n box is unreachable. -->
+    <div class="fp-card" id="fpCard">
+      <div class="fp-card-head">
+        <span class="fp-domain" id="fpDomain">stripe.com</span>
+        <span class="fp-timing" id="fpTiming">example &middot; 1.05s</span>
+      </div>
+      <div class="fp-rows" id="fpRows">
+        <div class="fp-row"><div class="fp-k">Mailbox</div><div class="fp-v">Google Workspace</div></div>
+        <div class="fp-row"><div class="fp-k">Sends on their behalf</div><div class="fp-v"><span class="fp-pill">Greenhouse</span><span class="fp-pill">Qualtrics</span></div></div>
+        <div class="fp-row"><div class="fp-k">Cold email tooling</div><div class="fp-v"><span class="none">None detected</span></div></div>
+        <div class="fp-row"><div class="fp-k">DMARC</div><div class="fp-v">p=reject, with aggregate reporting</div></div>
+        <div class="fp-row"><div class="fp-k">Enrolled with</div><div class="fp-v"><span class="fp-pill">Google</span><span class="fp-pill">Microsoft</span><span class="fp-pill">Apple Business</span><span class="fp-pill">Atlassian</span><span class="fp-pill">DocuSign</span><span class="fp-pill">Canva</span><span class="fp-pill">Meta</span><span class="fp-pill">Stripe</span></div></div>
+        <div class="fp-row"><div class="fp-k">Homepage stack</div><div class="fp-v">nginx</div></div>
+      </div>
+    </div>
+
+    <p class="fp-note">Public DNS and one unauthenticated request, the same things any mail server or browser sees. Rate limited, results cached, nothing stored against you.</p>
+  </div>
+</section>
+
 <section id="work-with-me">
   <div class="wrap reveal r-head">
     <div class="sec-label">Work with me</div>
@@ -1255,10 +1355,19 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   // Throttled by timestamp rather than requestAnimationFrame: the sweep must
   // run even if a frame is never scheduled. At most ~13 getBoundingClientRect
   // calls, ten times a second, shrinking as elements are revealed and removed.
-  var last = 0;
+  var last = 0, trailing = null;
   function onScroll(){
     var now = Date.now();
-    if(now - last < 100) return;
+    if(now - last < 100){
+      // Leading edge alone is not enough: if a scroll burst ENDS inside the
+      // throttle window, no further event ever arrives and the final position
+      // never gets swept, leaving that content invisible. Always guarantee a
+      // trailing sweep.
+      if(!trailing) trailing = setTimeout(function(){
+        trailing = null; last = Date.now(); sweep();
+      }, 120);
+      return;
+    }
     last = now;
     sweep();
   }
@@ -1431,6 +1540,123 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     });
   },{rootMargin:'-50% 0px -45% 0px'});
   sections.forEach(function(s){ if(s) scrollIo.observe(s); });
+})();
+</script>
+<script>
+/* Fingerprint widget.
+ *
+ * Deliberately a SEPARATE script block from the main one above. The main IIFE
+ * has already run by the time this parses, so nothing in here can stop the
+ * nav, drawer, newsletter form, marquee or the scroll-reveal sweep from
+ * working. The whole body is wrapped in try/catch on top of that.
+ *
+ * The card above is already populated with a real result rendered into the
+ * HTML, so this file only ever REPLACES good content with other good content.
+ * If it never runs, the section still reads correctly.
+ */
+(function(){
+  'use strict';
+  try{
+    var ENDPOINT = 'https://n8n.mattbis.com/webhook/fingerprint';
+    var TIMEOUT_MS = 15000;
+
+    var form = document.getElementById('fpForm');
+    var input = document.getElementById('fpInput');
+    var go = document.getElementById('fpGo');
+    var msg = document.getElementById('fpMsg');
+    var card = document.getElementById('fpCard');
+    var elDomain = document.getElementById('fpDomain');
+    var elTiming = document.getElementById('fpTiming');
+    var elRows = document.getElementById('fpRows');
+    if(!form || !input || !go || !msg || !card || !elRows) return;
+
+    function esc(v){
+      return String(v == null ? '' : v)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+    function pills(list, hot){
+      if(!list || !list.length) return '<span class="none">None detected</span>';
+      return list.slice(0,14).map(function(x){
+        return '<span class="fp-pill'+(hot?' hot':'')+'">'+esc(x)+'</span>';
+      }).join('');
+    }
+    function row(k, vHtml){
+      return '<div class="fp-row"><div class="fp-k">'+esc(k)+'</div><div class="fp-v">'+vHtml+'</div></div>';
+    }
+    function render(d){
+      var dm = d.dmarc
+        ? 'p='+esc(d.dmarc.policy)+(d.dmarc.reporting ? ', with aggregate reporting' : ', no reporting address')
+        : '<span class="none">No DMARC record</span>';
+      var stack = [].concat(d.hosting||[], d.frameworks||[]);
+      var html = '';
+      html += row('Mailbox', d.mailbox ? esc(d.mailbox) : '<span class="none">No MX records</span>');
+      html += row('Sends on their behalf', pills(d.senders));
+      html += row('Cold email tooling', pills(d.coldEmail, true));
+      html += row('DMARC', dm);
+      if(d.deanon && d.deanon.length) html += row('Visitor deanonymization', pills(d.deanon, true));
+      html += row('Enrolled with', pills(d.vendors));
+      if(d.martech && d.martech.length) html += row('Homepage martech', pills(d.martech));
+      html += row('Homepage stack', stack.length ? esc(stack.join(', ')) : '<span class="none">Not detected</span>');
+      elRows.innerHTML = html;
+      if(elDomain) elDomain.textContent = d.domain || '';
+      if(elTiming) elTiming.textContent = 'live \u00b7 ' + ((d.elapsedMs||0)/1000).toFixed(2) + 's';
+    }
+
+    var busy = false;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(busy) return;
+      var v = (input.value || '').trim();
+      if(!v){ msg.textContent = 'Enter a domain first.'; return; }
+
+      busy = true;
+      go.disabled = true;
+      go.textContent = 'Reading DNS\u2026';
+      msg.textContent = '';
+      card.classList.add('busy');
+
+      var done = false;
+      var timer = setTimeout(function(){
+        if(done) return;
+        done = true;
+        finish('That took too long. The lookup box may be down; the example above still shows what it returns.');
+      }, TIMEOUT_MS);
+
+      function finish(errText){
+        clearTimeout(timer);
+        busy = false;
+        go.disabled = false;
+        go.textContent = 'Fingerprint it';
+        card.classList.remove('busy');
+        if(errText) msg.textContent = errText;
+      }
+
+      fetch(ENDPOINT, {
+        method: 'POST',
+        // text/plain keeps this a CORS "simple request", so the browser never
+        // sends an OPTIONS preflight. One less thing to misconfigure on n8n.
+        headers: {'Content-Type':'text/plain'},
+        body: JSON.stringify({domain: v})
+      }).then(function(r){
+        if(!r.ok) throw new Error('http_'+r.status);
+        return r.json();
+      }).then(function(d){
+        if(done) return;
+        done = true;
+        if(!d || d.ok !== true){
+          finish((d && d.error) ? d.error : 'Could not read that domain.');
+          return;
+        }
+        render(d);
+        finish('');
+      }).catch(function(){
+        if(done) return;
+        done = true;
+        finish('Lookup unavailable right now. The example above is a real result from the same workflow.');
+      });
+    });
+  }catch(_){ /* never let the widget affect the rest of the page */ }
 })();
 </script>
 </body>

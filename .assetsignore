@@ -5,3 +5,5 @@
 wrangler.jsonc
 .assetsignore
 .gitignore
+# Workflow definitions are versioned here but must not be served as assets.
+n8n/
