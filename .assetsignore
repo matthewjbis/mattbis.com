@@ -1,3 +1,7 @@
 # Files in the repo root that should NOT be published as static assets.
-wrangler.toml
+# Wrangler's automatic config exclusion does not reliably cover this — the
+# .jsonc was being served at https://mattbis.com/wrangler.jsonc (HTTP 200)
+# until it was listed here explicitly. Keep this in sync with the config file.
+wrangler.jsonc
 .assetsignore
+.gitignore
