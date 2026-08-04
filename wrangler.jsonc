@@ -1,12 +1,27 @@
 {
+  // Cloudflare Worker (static assets) configuration for mattbis.com.
+  //
+  // This is the ONLY Wrangler config in the repo. A wrangler.toml previously
+  // sat alongside it; Wrangler prefers .jsonc when both exist, so the .toml
+  // was inert and edits to it would have silently done nothing. Deleted.
+  //
+  // The Worker's deploy command is `npx wrangler deploy`, which REQUIRES this
+  // file — without it, every Git-triggered build fails and the live site stays
+  // frozen on the last successful deploy.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mattbiscom",
   "compatibility_date": "2026-06-14",
   "observability": {
     "enabled": true
   },
+  // Serve the repository root as a static-assets-only Worker (no JS entrypoint).
+  // Wrangler automatically excludes the config file, .git, and node_modules.
   "assets": {
-    "directory": "."
+    "directory": ".",
+    // Serve /404.html (with a 404 status) for paths that don't match an asset.
+    // Carried over from the deleted wrangler.toml — without it, unmatched paths
+    // fall back to index.html with a 200 instead of the custom 404 page.
+    "not_found_handling": "404-page"
   },
   "compatibility_flags": [
     "nodejs_compat"
