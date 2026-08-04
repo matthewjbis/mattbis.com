@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Matthew Bis | AI Automation & GTM Systems</title>
-<meta name="description" content="Matthew Bis builds production-grade automation that closes the gap between AI capability and workflow utility. Marketing automation, GTM engineering, linguistics.">
+<title>Matthew Bis | GTM Engineer — Pipeline, Signal & AI Automation</title>
+<meta name="description" content="Matthew Bis is a GTM engineer. Outbound pipeline generation, inbound signal triage and routing, CRM and context infrastructure, competitive and market intelligence — built in production, not in a sandbox.">
 <meta name="theme-color" content="#f4f1ea">
-<meta property="og:title" content="Matthew Bis | AI Automation & GTM Systems">
-<meta property="og:description" content="Production-grade automation that closes the gap between AI capability and workflow utility.">
+<meta property="og:title" content="Matthew Bis | GTM Engineer — Pipeline, Signal & AI Automation">
+<meta property="og:description" content="Pipeline generation, signal triage and routing, CRM and context infrastructure. Production-grade GTM systems, not demos.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mattbis.com">
 <meta property="og:site_name" content="Matthew Bis">
 <meta property="og:image" content="https://mattbis.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Matthew Bis — AI Automation & GTM Engineering">
+<meta property="og:image:alt" content="Matthew Bis — GTM Engineering & AI Automation">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Matthew Bis | AI Automation & GTM Systems">
-<meta name="twitter:description" content="Production-grade automation that closes the gap between AI capability and workflow utility.">
+<meta name="twitter:title" content="Matthew Bis | GTM Engineer — Pipeline, Signal & AI Automation">
+<meta name="twitter:description" content="Pipeline generation, signal triage and routing, CRM and context infrastructure. Production-grade GTM systems, not demos.">
 <meta name="twitter:image" content="https://mattbis.com/og-image.png">
-<meta name="twitter:image:alt" content="Matthew Bis — AI Automation & GTM Engineering">
+<meta name="twitter:image:alt" content="Matthew Bis — GTM Engineering & AI Automation">
 <link rel="canonical" href="https://mattbis.com">
 <template id="__bundler_thumbnail" data-bg-color="#f4f1ea">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@
   "name": "Matthew Bis",
   "alternateName": "Matt Bis",
   "url": "https://mattbis.com",
-  "jobTitle": "AI Automation & GTM Engineer",
+  "jobTitle": "GTM Engineer",
   "description": "Builds production-grade automation that closes the gap between AI capability and workflow utility.",
   "address": {
     "@type": "PostalAddress",
@@ -52,10 +52,16 @@
     "addressCountry": "US"
   },
   "knowsAbout": [
+    "GTM Engineering",
     "AI Automation",
     "Marketing Operations",
     "Revenue Operations",
-    "GTM Engineering",
+    "Marketing Automation",
+    "Lead Scoring and Routing",
+    "Buying Signal Detection",
+    "Outbound Pipeline Generation",
+    "CRM Data Hygiene",
+    "Competitive Intelligence",
     "Prompt Engineering",
     "Context Engineering",
     "Linguistics",
@@ -63,6 +69,8 @@
     "LangGraph",
     "Python",
     "Salesforce",
+    "ActiveCampaign",
+    "Apollo.io",
     "Retrieval-Augmented Generation"
   ],
   "knowsLanguage": [
@@ -489,6 +497,7 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
 .proof-cell .stat{font-family:var(--display);font-size:clamp(2.2rem,4vw,2.8rem);
   font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .proof-cell .stat em{font-style:normal;color:var(--accent)}
+.proof-cell .stat.narrow{font-size:clamp(1.75rem,3.1vw,2.2rem);white-space:nowrap}
 .proof-cell .cap{font-family:var(--serif);font-size:1.02rem;
   color:var(--ink-soft);margin-top:18px;line-height:1.55;max-width:34ch}
 @media(hover:hover){.proof-cell:hover{background:#fdfaf3}}
@@ -586,8 +595,34 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
 @media(max-width:640px){.lang-sep{display:none}}
 
 /* ─── SYSTEMS ─────────────────────────────────────── */
-.systems{display:grid;gap:0;margin-top:40px;border-top:1px solid var(--line)}
-.sys{padding:44px 0;border-bottom:1px solid var(--line);
+.systems{display:grid;gap:0;margin-top:40px}
+
+/* surface = one area of the GTM stack; holds a lead system + its siblings */
+.surface{border-top:1px solid var(--line);padding-top:34px}
+.surface:last-child{border-bottom:1px solid var(--line)}
+.surface-head{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:baseline}
+@media(max-width:760px){.surface-head{grid-template-columns:1fr;gap:12px}}
+.surface-name{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);
+  display:flex;align-items:baseline;gap:12px;line-height:1.4}
+.surface-name .sn{color:var(--ink-faint);letter-spacing:.08em}
+.surface-thesis{color:var(--ink-soft);font-size:1.02rem;line-height:1.6;max-width:54ch}
+@media(max-width:640px){.surface-name{font-size:11.5px}.surface-thesis{font-size:1rem}}
+
+/* siblings — compact, aligned to the lead system's body column */
+.also{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;padding:26px 0 44px}
+@media(max-width:760px){.also{grid-template-columns:1fr;gap:16px;padding:22px 0 36px}}
+.also-label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-faint);padding-top:3px}
+.also-list{display:flex;flex-direction:column}
+.also-item{padding:15px 0;border-top:1px dashed var(--line)}
+.also-item:first-child{border-top:0;padding-top:0}
+.also-item h4{font-family:var(--display);font-weight:600;font-size:1.03rem;
+  letter-spacing:-.01em;margin-bottom:5px;color:var(--ink)}
+.also-item p{color:var(--ink-soft);font-size:.97rem;line-height:1.58;max-width:58ch}
+@media(max-width:640px){.also-item p{font-size:.95rem}}
+
+.sys{padding:34px 0 0;
   display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:start;
   position:relative;transition:padding-left .4s var(--easing)}
 .sys::before{
@@ -599,7 +634,7 @@ section{padding:clamp(64px,11vw,140px) 0;position:relative}
   .sys:not(.stub):hover{padding-left:18px}
   .sys:not(.stub):hover::before{transform:scaleY(1)}
 }
-@media(max-width:760px){.sys{grid-template-columns:1fr;gap:22px;padding:36px 0}}
+@media(max-width:760px){.sys{grid-template-columns:1fr;gap:22px;padding:22px 0 0}}
 .sys-meta .kind{font-family:var(--mono);font-size:11px;letter-spacing:.12em;
   text-transform:uppercase;color:var(--accent);margin-bottom:14px}
 .sys.stub .sys-meta .kind{color:var(--ink-faint)}
@@ -804,7 +839,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 
 <header id="top">
   <div class="wrap">
-    <div class="eyebrow">Chicago, IL · AI Automation & GTM Engineering</div>
+    <div class="eyebrow">Chicago, IL · GTM Engineering & AI Automation</div>
     <h1>
       <span class="l">Most AI projects die</span>
       <span class="l">in production.</span>
@@ -895,9 +930,9 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
         <div class="cap">From a free-text customer description to a live, deduplicated outbound campaign</div>
       </div>
       <div class="proof-cell">
-        <div class="cap-top">Pipeline depth</div>
-        <div class="stat">20<em>+</em></div>
-        <div class="cap">Discrete nodes in a single pipeline — parse, enrich, generate, validate, dedup, launch</div>
+        <div class="cap-top">Signal, not volume</div>
+        <div class="stat narrow">22,191 <em>&rarr;</em> 391</div>
+        <div class="cap">Cold CRM records read against a written ICP, returned as contacts with a verified signal and a named buyer — every one human-audited before it counted</div>
       </div>
       <div class="proof-cell">
         <div class="cap-top">Volume shipped</div>
@@ -943,81 +978,152 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 <section id="systems">
   <div class="wrap reveal r-head">
     <div class="sec-label">Selected systems</div>
-    <h2 class="sec-head">A few things I've built, described by what they decide</h2>
-    <p class="sec-intro">Anonymized on purpose. No clients, no revenue figures. The logo behind a system is the least interesting thing about it. What's worth your time is the architecture and the decisions inside it.</p>
+    <h2 class="sec-head">Four surfaces of a GTM stack, and what I built on each</h2>
+    <p class="sec-intro">Pipeline generation, signal and routing, data and context, intelligence and enablement. Each surface gets one system described in full — what it decides and why it's built that way — with the rest of that surface underneath it. Anonymized on purpose: no clients, no revenue figures. The logo behind a system is the least interesting thing about it.</p>
     <div class="systems reveal r-stagger">
 
-      <div class="sys">
-        <div class="sys-meta">
-          <div class="kind">Account intelligence &rarr; sales floor</div>
-          <h3>One Slack command returns an account brief that already knows what you sell them</h3>
-          <div class="stack">Slack slash command (async webhook)<br>n8n parallel fan-out / merge<br>Version-controlled context, fetched at runtime<br>Open-web research + CRM state, fused<br>LLM synthesis, Claude via OpenRouter</div>
+      <!-- ── 01 · PIPELINE GENERATION ───────────────────────────── -->
+      <div class="surface">
+        <div class="surface-head">
+          <div class="surface-name"><span class="sn">01</span> Pipeline generation</div>
+          <p class="surface-thesis">Turning a description of who you want to reach into contacts a rep can actually work, without a data team standing in the middle of it.</p>
         </div>
-        <div class="sys-body">
-          <p>A rep types a company name into the channel they already live in and gets back a structured brief seconds later: ICP fit, likely buyers, application match, recommended products, and the field most research tools skip entirely, the relationship. Net-new or existing account? What do they already own? Is there open pipeline a teammate is quietly working? The command fans out in parallel, reads the company's public footprint from a live research API, pulls demand-side truth from the CRM, composes both against a version-controlled context layer, and posts the answer back to the same thread.</p>
-          <p class="decision">Most "research bots" summarize a website. The work here was the join: supply-side signal from the open web against demand-side reality from the CRM, so the brief can tell a rep they're about to walk into a deal a colleague already owns. The context files are read from a versioned repo at request time, never pasted into a prompt, so one edit propagates to every brief the team will ever run. And customer data is walled off from model training by default. That last constraint is the one nobody asks for. It's also the reason a system like this is allowed near a CRM at all.</p>
+
+        <div class="sys">
+          <div class="sys-meta">
+            <div class="kind">Free-text &rarr; live campaign engine</div>
+            <h3>A sentence becomes a deduplicated outbound sequence in about a minute</h3>
+            <div class="stack">Multi-stage n8n pipeline<br>Web frontend<br>LLM for language<br>Quality gates ahead of enrichment<br>Enrichment + CRM dedup</div>
+          </div>
+          <div class="sys-body">
+            <p>You type a plain-English description of who you want to reach. The system parses it into structured targeting, pulls and enriches matching prospects, writes a multi-step sequence in a defined brand voice, checks its own output for hallucinations, dedupes against the CRM, and pushes it live. Sentence in, campaign out.</p>
+            <p>The unglamorous middle is where the value actually sits. Enrichment runs <em>after</em> the filters rather than before, so credits are only ever spent on prospects that already cleared geography, freemail, and role checks — roughly a two-thirds cut in data cost per campaign. Bad-fit contacts get diverted rather than silently dropped, because a list you can audit is worth more than a list that merely looks clean.</p>
+            <p class="decision">What I'm proud of isn't the speed. It's that it's <em>not</em> an agent. The LLM does the language; the orchestration does the thinking. Autonomy would have demoed better and broken more. Choosing the reliable architecture over the impressive one is the whole job.</p>
+          </div>
+        </div>
+
+        <div class="also">
+          <div class="also-label">Also on this surface</div>
+          <div class="also-list">
+            <div class="also-item">
+              <h4>Dormant-database revival</h4>
+              <p>A six-stage pipeline read 22,191 cold CRM records against a written ICP and returned 391 contacts across 72 accounts, each with a verified buying signal and a named buyer, capped at ten per account so no one logo swamps the sequence. A human audited every signal before it counted. Total model cost for the run: under three dollars. The real constraint isn't compute — it's whether the CRM holds enough firmographic detail to reason over. Without that you're asking a model to guess and calling it enrichment.</p>
+            </div>
+            <div class="also-item">
+              <h4>Thin-market sourcing</h4>
+              <p>A scraper CLI with typed, schema-validated extraction for the segments the standard data vendors cover badly. When coverage is the bottleneck, buying more credits doesn't fix it.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="sys">
-        <div class="sys-meta">
-          <div class="kind">Free-text &rarr; live campaign engine</div>
-          <h3>A sentence becomes a deduplicated outbound sequence in about a minute</h3>
-          <div class="stack">Multi-stage n8n pipeline<br>Web frontend<br>LLM for language<br>Enrichment + CRM dedup</div>
+      <!-- ── 02 · SIGNAL & ROUTING ──────────────────────────────── -->
+      <div class="surface">
+        <div class="surface-head">
+          <div class="surface-name"><span class="sn">02</span> Signal &amp; routing</div>
+          <p class="surface-thesis">Catching buying intent while it's still intent, deciding whether it's real, and putting it in front of a rep before it cools.</p>
         </div>
-        <div class="sys-body">
-          <p>You type a plain-English description of who you want to reach. The system parses it into structured targeting, pulls and enriches matching prospects, writes a multi-step sequence in a defined brand voice, checks its own output for hallucinations, dedupes against the CRM, and pushes it live. Sentence in, campaign out.</p>
-          <p class="decision">What I'm proud of isn't the speed. It's that it's <em>not</em> an agent. The LLM does the language; the orchestration does the thinking. Autonomy would have demoed better and broken more. Choosing the reliable architecture over the impressive one is the whole job.</p>
+
+        <div class="sys">
+          <div class="sys-meta">
+            <div class="kind">Inbound signal &rarr; qualified alert</div>
+            <h3>Buying interest gets scored, checked against the CRM, and researched before a rep is ever pinged</h3>
+            <div class="stack">Marketing automation as the sensor layer<br>Weighted scoring with time decay<br>n8n orchestration, multi-stage<br>LLM qualification gate, structured output<br>Enrichment + research, gated on verification</div>
+          </div>
+          <div class="sys-body">
+            <p>Ten high-ticket industrial product lines, each with its own quiet tells: the spec page read three times in a week, the case study downloaded, the comparison guide opened, the webinar attended. The marketing automation platform already sees all of it. It just reports it as <em>activity</em>, which is not the same thing as intent. This weights every action by signal strength and by the size of the deal sitting behind it, then decays those scores over time, so "hot" means hot now and not hot in March.</p>
+            <p>A score still isn't a lead. Before anything reaches a person, each signal is read against live CRM history: is this internal traffic, a duplicate of a contact surfaced last month, an existing customer re-engaging, an open opportunity a teammate is quietly working, or a genuine conversation about this exact product in the last ninety days? Only what survives gets enriched, researched against the open web, and assembled into a single alert that says who, what they're looking at, and why the system believes it's new.</p>
+            <p class="decision">The expensive failure mode here isn't a missed lead, it's a false alarm. Ping a rep about an account a colleague already owns and they stop trusting the system inside a week — after which every real alert costs exactly what the noise cost. So qualification fails closed, surfacing only on evidence of genuinely net-new interest, while enrichment fails open, because a lookup hiccup should never bury a real one. Research runs only after a contact is independently verified; an unmatched name goes straight to notification rather than handing a guess to a model that would happily invent a biography.</p>
+            <p>I built this on ActiveCampaign because that's what the stack ran, but nothing in the architecture is specific to it. The platform is a sensor and a tag store; the same wiring sits on top of HubSpot or Marketo without the logic changing. The part worth stealing is that it compounds: every campaign, landing page, and content asset shipped afterwards becomes another sensor feeding the same engine.</p>
+          </div>
+        </div>
+
+        <div class="also">
+          <div class="also-label">Also on this surface</div>
+          <div class="also-list">
+            <div class="also-item">
+              <h4>The outbound twin</h4>
+              <p>Same philosophy pointed at correspondence instead of web behavior: an LLM classifier reads inbound mail for real expansion signals inside accounts already being served. The hard part isn't detection, it's restraint. A classifier that fires on everything is noise wearing a useful costume, so the whole thing is tuned around what it declines to surface. Precision is the product; the cleverness is invisible on purpose.</p>
+            </div>
+            <div class="also-item">
+              <h4>Voice qualification</h4>
+              <p>A form submission triggers an outbound voice agent that runs the qualification script, then transcribes and files the answers for the rep. Speed-to-lead is mostly a scheduling problem, and scheduling problems are the cheapest thing in the stack to automate away.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="sys">
-        <div class="sys-meta">
-          <div class="kind">Context infrastructure</div>
-          <h3>A version-controlled context layer injected into every AI call a company makes</h3>
-          <div class="stack">GitHub repo, structured markdown<br>Composable core / catalog / department layers<br>Slack-native slash command surface<br>Reviewed like code, because it is</div>
+      <!-- ── 03 · DATA & CONTEXT FOUNDATION ─────────────────────── -->
+      <div class="surface">
+        <div class="surface-head">
+          <div class="surface-name"><span class="sn">03</span> Data &amp; context foundation</div>
+          <p class="surface-thesis">The layer every other system reads from. Get it wrong and each tool quietly invents its own version of the truth.</p>
         </div>
-        <div class="sys-body">
-          <p>Prompt libraries collect answers; this maintains truth. One repo of structured markdown — ICP, personas, voice, the claims the company never makes — composed in layers and injected as context into every AI workflow in the org. Anyone can pull it from Slack with a slash command. Nobody can quietly fork it.</p>
-          <p class="decision">Hallucination is a context problem before it's a prompt problem. A model fills gaps with plausible fiction when nobody hands it the source of truth. Treating context like code — versioned, composable, reviewed — turned drafts that needed three rounds of correction into drafts that come back clean.</p>
-          <p>The production system stays behind the curtain. So I rebuilt the architecture in the open — a runnable reference with an assembly engine, CI budget enforcement, and a fictional company in place of any client. Clone it and run it.</p>
-          <a href="https://github.com/matthewjbis/context-kit" target="_blank" rel="noopener" class="sys-cta-link">Inspect the reference build <span class="arr" aria-hidden="true">&#8599;</span></a>
+
+        <div class="sys">
+          <div class="sys-meta">
+            <div class="kind">Context infrastructure</div>
+            <h3>A version-controlled context layer injected into every AI call a company makes</h3>
+            <div class="stack">GitHub repo, structured markdown<br>Composable core / catalog / department layers<br>Slack-native slash command surface<br>Reviewed like code, because it is</div>
+          </div>
+          <div class="sys-body">
+            <p>Prompt libraries collect answers; this maintains truth. One repo of structured markdown — ICP, personas, voice, the claims the company never makes — composed in layers and injected as context into every AI workflow in the org. Anyone can pull it from Slack with a slash command. Nobody can quietly fork it.</p>
+            <p class="decision">Hallucination is a context problem before it's a prompt problem. A model fills gaps with plausible fiction when nobody hands it the source of truth. Treating context like code — versioned, composable, reviewed — turned drafts that needed three rounds of correction into drafts that come back clean.</p>
+            <p>The production system stays behind the curtain. So I rebuilt the architecture in the open — a runnable reference with an assembly engine, CI budget enforcement, and a fictional company in place of any client. Clone it and run it.</p>
+            <a href="https://github.com/matthewjbis/context-kit" target="_blank" rel="noopener" class="sys-cta-link">Inspect the reference build <span class="arr" aria-hidden="true">&#8599;</span></a>
+          </div>
+        </div>
+
+        <div class="also">
+          <div class="also-label">Also on this surface</div>
+          <div class="also-list">
+            <div class="also-item">
+              <h4>A gateway in front of the CRM</h4>
+              <p>Nothing I build writes to Salesforce directly. Reads and writes go through a secured service-account gateway, so access is scoped and revocable in one place instead of scattered across a dozen workflow credentials. It's a boring decision, and it's the one that determines whether automation is allowed near the CRM at all.</p>
+            </div>
+            <div class="also-item">
+              <h4>Lead intake as an application</h4>
+              <p>A spreadsheet template that everyone downloaded, filled in wrong, and re-downloaded whenever it changed, rebuilt as a small web app that validates against live CRM state at entry. Most internal tooling wins are this shape: not smarter, just no longer possible to use incorrectly.</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="sys">
-        <div class="sys-meta">
-          <div class="kind">Sales-signal triage</div>
-          <h3>An LLM-augmented pipeline that surfaces upsell signals buried in correspondence</h3>
-          <div class="stack">n8n + LLM classification<br>CRM-integrated<br>Tuned for false-positive reduction</div>
+      <!-- ── 04 · INTELLIGENCE & ENABLEMENT ─────────────────────── -->
+      <div class="surface">
+        <div class="surface-head">
+          <div class="surface-name"><span class="sn">04</span> Intelligence &amp; enablement</div>
+          <p class="surface-thesis">Research that arrives before anyone has to go looking for it, in the place they already work.</p>
         </div>
-        <div class="sys-body">
-          <p>Reads inbound correspondence and flags genuine expansion signals before anyone has to go looking for them. The hard part isn't detection, it's restraint. A classifier that fires on everything is noise wearing a useful costume, and a team learns to ignore it within a week. So the whole system is tuned around what it chooses <em>not</em> to surface.</p>
-          <p class="decision">The temptation was to let a model "read everything and decide." I built it as classification with tight thresholds instead, tuned so a flag a human trusts is worth more than ten the model finds interesting. Precision is the product; the cleverness is invisible on purpose.</p>
-        </div>
-      </div>
 
-      <div class="sys">
-        <div class="sys-meta">
-          <div class="kind">Retrieval & content</div>
-          <h3>RAG assistant + AEO/GEO content pipeline</h3>
-          <div class="stack">Retrieval-augmented generation<br>Web frontend<br>Answer-engine-optimized output</div>
+        <div class="sys">
+          <div class="sys-meta">
+            <div class="kind">Account intelligence &rarr; sales floor</div>
+            <h3>One Slack command returns an account brief that already knows what you sell them</h3>
+            <div class="stack">Slack slash command (async webhook)<br>n8n parallel fan-out / merge<br>Version-controlled context, fetched at runtime<br>Open-web research + CRM state, fused<br>LLM synthesis, Claude via OpenRouter</div>
+          </div>
+          <div class="sys-body">
+            <p>A rep types a company name into the channel they already live in and gets back a structured brief seconds later: ICP fit, likely buyers, application match, recommended products, and the field most research tools skip entirely, the relationship. Net-new or existing account? What do they already own? Is there open pipeline a teammate is quietly working? The command fans out in parallel, reads the company's public footprint from a live research API, pulls demand-side truth from the CRM, composes both against a version-controlled context layer, and posts the answer back to the same thread.</p>
+            <p class="decision">Most "research bots" summarize a website. The work here was the join: supply-side signal from the open web against demand-side reality from the CRM, so the brief can tell a rep they're about to walk into a deal a colleague already owns. The context files are read from a versioned repo at request time, never pasted into a prompt, so one edit propagates to every brief the team will ever run. And customer data is walled off from model training by default. That last constraint is the one nobody asks for. It's also the reason a system like this is allowed near a CRM at all.</p>
+          </div>
         </div>
-        <div class="sys-body">
-          <p>Two halves of the same problem: getting grounded answers <em>out</em> of a body of source material, and structuring published material so answer engines surface and cite it correctly. One faces inward, one faces the open web, but both come down to the same discipline, making sure the words map cleanly to something real. The public-facing half turned answer engines into a measurable, compounding referral channel, year over year.</p>
-          <p class="decision">Retrieval is where most RAG quietly fails: the model sounds confident over the wrong chunk. I spent the effort on grounding and citation rather than the generation layer, because a fluent answer to the wrong question is the most expensive kind of wrong. Disciplined retrieval beats clever generation every time.</p>
-        </div>
-      </div>
 
-      <div class="sys">
-        <div class="sys-meta">
-          <div class="kind">Inbound qualification &rarr; sales routing</div>
-          <h3>A high-intent signal gets checked against CRM history before a rep is ever pinged</h3>
-          <div class="stack">Tag-based signal capture<br>n8n orchestration, multi-stage<br>LLM qualification gate, structured output<br>Enrichment + research, gated on verification</div>
-        </div>
-        <div class="sys-body">
-          <p>Every tagged high-value signal looks the same from the outside: someone showed interest. Most of it is noise, an existing customer re-engaging, a deal already being worked, the same contact tagged twice. This reads each lead against live CRM history first, checking for an open opportunity, a recent purchase, or a real conversation about that specific product, before anything reaches a human. Only the genuinely net-new ones get enriched and routed.</p>
-          <p class="decision">The expensive failure mode here isn't a missed lead, it's a false alarm: a rep gets pinged about an account a colleague already owns, and stops trusting the system within a week. So qualification fails closed, surfacing only on real evidence of net-new interest, while enrichment fails open, a lookup hiccup never blocks a genuine one. Research only runs once a contact is independently verified; an unmatched name skips straight to notification instead of feeding a guess to a model that would happily invent one.</p>
+        <div class="also">
+          <div class="also-label">Also on this surface</div>
+          <div class="also-list">
+            <div class="also-item">
+              <h4>Weekly competitive dossier</h4>
+              <p>Seven sources per competitor — site diffs, newsletters, RSS, and four social surfaces — collected on a schedule and synthesized <em>against</em> our own positioning rather than summarized in isolation. The output isn't a feed of what they posted. It's three sections: what's happening, what it means for us, and what to do about it. Competitive intel goes stale because it's a manual chore, so the fix is to stop making it one.</p>
+            </div>
+            <div class="also-item">
+              <h4>Video intelligence</h4>
+              <p>Scrapes the best-performing videos in a niche over the last ninety days, ranked by outlier score against each channel's own baseline rather than by raw views — a million views from a channel that always does a million tells you nothing. Pulls the transcripts, writes a breakdown card per video, then synthesizes a winning-formula document across all of them: the hooks, structures, and angles that actually did the work. Content strategy from evidence instead of instinct.</p>
+            </div>
+            <div class="also-item">
+              <h4>RAG assistant + AEO/GEO pipeline</h4>
+              <p>Two halves of one problem: getting grounded answers <em>out</em> of a body of source material, and structuring published material so answer engines surface and cite it correctly. Retrieval is where most RAG quietly fails — a fluent answer over the wrong chunk is the most expensive kind of wrong — so the effort went into grounding and citation rather than the generation layer. The public-facing half turned answer engines into a measurable, compounding referral channel, year over year.</p>
+            </div>
+          </div>
         </div>
       </div>
 
