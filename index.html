@@ -144,50 +144,69 @@ body::before{
 @media(max-width:640px){.wrap{padding:0 22px}}
 
 /* ─── NAV ─────────────────────────────────────────── */
-nav{
+/* floating dock: a positioning wrapper (full-width, non-interactive) that
+   centers the pill and lets page content scroll normally beneath it */
+.nav-dock{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:18px 7vw;
-  background:color-mix(in srgb, var(--bg) 86%, transparent);
-  backdrop-filter:saturate(140%) blur(8px);
-  -webkit-backdrop-filter:saturate(140%) blur(8px);
-  border-bottom:1px solid transparent;
-  transition:border-color .3s var(--easing), background .3s var(--easing);
+  display:flex;justify-content:center;
+  padding:18px 24px 0;
+  pointer-events:none;
+}
+nav{
+  pointer-events:auto;
+  display:flex;align-items:center;gap:2px;max-width:100%;
+  padding:7px 7px 7px 22px;border-radius:40px;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  border:1px solid var(--line-soft);
+  backdrop-filter:saturate(140%) blur(10px);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+  box-shadow:0 10px 30px -16px var(--shadow);
+  transition:box-shadow .35s var(--easing),transform .35s var(--easing),margin-top .35s var(--easing);
   font-family:var(--mono);
   font-size:12px;letter-spacing:.08em;text-transform:uppercase;
 }
-/* hairline appears once you've scrolled past the hero */
-nav.scrolled{border-bottom-color:var(--line)}
-@media(max-width:640px){nav{padding:14px 22px}}
-nav .brand{font-weight:500;color:var(--ink);text-decoration:none;
-  padding:8px 0;display:inline-flex;align-items:center;gap:9px}
-nav .brand .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
-nav .links{display:flex;gap:6px;align-items:center}
-nav .links > a{color:var(--ink-soft);text-decoration:none;
-  padding:10px 14px;transition:color .25s,background .25s;border-radius:2px}
-nav .links > a:hover{color:var(--accent)}
-nav .links > a.active{color:var(--ink)}
+/* settles closer to the edge and deepens its shadow once you've scrolled past the hero */
+nav.scrolled{box-shadow:0 14px 34px -10px var(--shadow);transform:scale(.97);margin-top:-6px}
+@media(max-width:640px){.nav-dock{padding:14px 16px 0}}
 
-/* contact dropdown */
+nav .brand{font-weight:500;color:var(--ink);text-decoration:none;
+  padding:8px 8px 8px 0;display:inline-flex;align-items:center;gap:9px;flex-shrink:0}
+nav .brand .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+nav .links{display:flex;gap:2px;align-items:center;margin:0 2px}
+nav .links > a{color:var(--ink-soft);text-decoration:none;
+  padding:10px 13px;transition:color .25s,background .25s;border-radius:20px}
+nav .links > a:hover{color:var(--accent);background:var(--bg)}
+nav .links > a.active{color:var(--ink)}
+nav .nav-cta{display:flex;align-items:center;gap:4px;margin-left:2px}
+
+.nav-btn{
+  color:#fff;background:var(--accent);text-decoration:none;white-space:nowrap;
+  padding:10px 20px;border-radius:24px;
+  transition:background .25s,transform .15s var(--easing);
+}
+.nav-btn:hover{background:var(--accent-hover)}
+.nav-btn:active{transform:scale(.96)}
+
+/* dropdowns (Contact, More) — shared pill-menu styling */
 .dropdown{position:relative;display:inline-flex}
 .dropdown-toggle{
   font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink-soft);background:transparent;border:0;cursor:pointer;
-  padding:10px 14px;border-radius:2px;
+  padding:10px 13px;border-radius:20px;
   display:inline-flex;align-items:center;gap:7px;
-  transition:color .25s;
+  transition:color .25s,background .25s;
 }
-.dropdown-toggle:hover{color:var(--accent)}
+.dropdown-toggle:hover{color:var(--accent);background:var(--bg)}
 .dropdown-toggle .caret{
   width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
   transform:rotate(45deg);margin-top:-3px;
   transition:transform .3s var(--easing);
 }
-.dropdown[data-open="true"] .dropdown-toggle{color:var(--accent)}
+.dropdown[data-open="true"] .dropdown-toggle{color:var(--accent);background:var(--bg)}
 .dropdown[data-open="true"] .caret{transform:rotate(225deg);margin-top:1px}
 .dropdown-menu{
-  position:absolute;top:calc(100% + 6px);right:0;
-  background:var(--paper);border:1px solid var(--line);border-radius:3px;
+  position:absolute;top:calc(100% + 10px);right:0;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
   box-shadow:0 8px 28px var(--shadow);
   min-width:210px;padding:6px;
   display:flex;flex-direction:column;
@@ -195,12 +214,15 @@ nav .links > a.active{color:var(--ink)}
   transition:opacity .22s var(--easing),transform .22s var(--easing);
   mix-blend-mode:normal;
 }
+/* the More trigger sits left-of-center in the pill — grow its menu rightward
+   so it doesn't overhang past the pill's left edge */
+#moreMenu{right:auto;left:0}
 .dropdown[data-open="true"] .dropdown-menu{opacity:1;transform:none;pointer-events:auto}
 .dropdown-menu a{
   display:flex;align-items:center;gap:10px;
   font-family:var(--mono);font-size:12px;letter-spacing:.03em;text-transform:none;
   color:var(--ink-soft);text-decoration:none;
-  padding:11px 12px;border-radius:2px;
+  padding:11px 12px;border-radius:9px;
   transition:color .2s,background .2s;
 }
 .dropdown-menu a:hover{color:var(--accent);background:var(--bg)}
@@ -209,7 +231,7 @@ nav .links > a.active{color:var(--ink)}
 /* hamburger */
 .menu-btn{
   display:none;background:transparent;border:0;cursor:pointer;
-  width:44px;height:44px;padding:0;margin:-10px;
+  width:44px;height:44px;padding:0;margin:-10px -6px -10px -2px;
   align-items:center;justify-content:center;color:var(--ink);
 }
 .menu-btn span{display:block;width:22px;height:1.5px;background:currentColor;
@@ -224,8 +246,13 @@ nav .links > a.active{color:var(--ink)}
 .menu-btn[aria-expanded="true"] span::before{top:0;transform:rotate(45deg);transition:transform .35s .1s var(--easing),top .25s var(--easing)}
 .menu-btn[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg);transition:transform .35s .1s var(--easing),top .25s var(--easing)}
 
-@media(max-width:760px){
+/* the pill's full link set needs ~800px to render without its flex children
+   compressing — switches to the hamburger-only pill well above the site's
+   760px content breakpoint to avoid that dead zone */
+@media(max-width:880px){
   nav .links{display:none}
+  nav .nav-cta{display:none}
+  nav{padding:7px}
   .menu-btn{display:inline-flex}
 }
 
@@ -851,17 +878,26 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 
 <a class="skip" href="#main">Skip to content</a>
 
+<div class="nav-dock">
 <nav>
   <a href="#top" class="brand"><span class="dot" aria-hidden="true"></span>Matthew&nbsp;Bis</a>
   <span class="links">
     <a href="#work">Work</a>
-    <a href="#patterns">Patterns</a>
-    <a href="#approach">Approach</a>
     <a href="#systems">Systems</a>
     <a href="#lahjat">Lahjat</a>
     <a href="#signal">Newsletter</a>
-    <a href="https://blog.mattbis.com" target="_blank" rel="noopener">Blog&nbsp;&#8599;</a>
-    <a href="#work-with-me">Work&nbsp;with&nbsp;me&nbsp;&rarr;</a>
+    <span class="dropdown" id="moreDropdown">
+      <button type="button" class="dropdown-toggle" id="moreToggle" aria-expanded="false" aria-controls="moreMenu">
+        More<span class="caret" aria-hidden="true"></span>
+      </button>
+      <span class="dropdown-menu" id="moreMenu">
+        <a href="#patterns"><span class="dot" aria-hidden="true"></span>Patterns</a>
+        <a href="#approach"><span class="dot" aria-hidden="true"></span>Approach</a>
+        <a href="https://blog.mattbis.com" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Blog ↗</a>
+      </span>
+    </span>
+  </span>
+  <span class="nav-cta">
     <span class="dropdown" id="contactDropdown">
       <button type="button" class="dropdown-toggle" id="contactToggle" aria-expanded="false" aria-controls="contactMenu">
         Contact<span class="caret" aria-hidden="true"></span>
@@ -872,11 +908,13 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
         <a href="https://www.linkedin.com/in/matthewjbis/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>LinkedIn ↗</a>
       </span>
     </span>
+    <a href="#work-with-me" class="nav-btn">Work&nbsp;with&nbsp;me</a>
   </span>
   <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
     <span></span>
   </button>
 </nav>
+</div>
 
 <div class="drawer" id="drawer" aria-hidden="true">
   <a href="#work" data-nav><span>Work</span><span class="n">01</span></a>
@@ -1360,29 +1398,35 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   // Re-sweep once webfonts and images have settled the layout.
   window.addEventListener('load', function(){ last = 0; sweep(); });
 
-  // ─── contact dropdown ───────────────────────────
-  var dd = document.getElementById('contactDropdown');
-  var ddToggle = document.getElementById('contactToggle');
-  function closeDropdown(){
-    dd.setAttribute('data-open','false');
-    ddToggle.setAttribute('aria-expanded','false');
-  }
-  function openDropdown(){
-    dd.setAttribute('data-open','true');
-    ddToggle.setAttribute('aria-expanded','true');
-  }
-  ddToggle.addEventListener('click', function(e){
-    e.stopPropagation();
-    if(dd.getAttribute('data-open') === 'true') closeDropdown(); else openDropdown();
-  });
-  document.addEventListener('click', function(e){
-    if(dd.getAttribute('data-open') === 'true' && !dd.contains(e.target)) closeDropdown();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && dd.getAttribute('data-open') === 'true'){ closeDropdown(); ddToggle.focus(); }
-  });
-  dd.querySelectorAll('.dropdown-menu a').forEach(function(a){
-    a.addEventListener('click', closeDropdown);
+  // ─── nav dropdowns (Contact, More) ───────────────
+  // The pill only has room for one open menu at a time, so opening either
+  // dropdown closes the other.
+  var allDropdowns = Array.from(document.querySelectorAll('nav .dropdown'));
+  allDropdowns.forEach(function(dd){
+    var ddToggle = dd.querySelector('.dropdown-toggle');
+    function closeDropdown(){
+      dd.setAttribute('data-open','false');
+      ddToggle.setAttribute('aria-expanded','false');
+    }
+    function openDropdown(){
+      allDropdowns.forEach(function(other){ if(other !== dd) other._close(); });
+      dd.setAttribute('data-open','true');
+      ddToggle.setAttribute('aria-expanded','true');
+    }
+    dd._close = closeDropdown;
+    ddToggle.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(dd.getAttribute('data-open') === 'true') closeDropdown(); else openDropdown();
+    });
+    document.addEventListener('click', function(e){
+      if(dd.getAttribute('data-open') === 'true' && !dd.contains(e.target)) closeDropdown();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && dd.getAttribute('data-open') === 'true'){ closeDropdown(); ddToggle.focus(); }
+    });
+    dd.querySelectorAll('.dropdown-menu a').forEach(function(a){
+      a.addEventListener('click', closeDropdown);
+    });
   });
 
   // ─── mobile drawer ──────────────────────────────
@@ -1413,8 +1457,8 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && drawer.classList.contains('open')) closeMenu();
   });
-  // close drawer if resized up to desktop
-  var mq = window.matchMedia('(min-width: 761px)');
+  // close drawer if resized up past the nav's own hamburger breakpoint (880px, see CSS)
+  var mq = window.matchMedia('(min-width: 881px)');
   (mq.addEventListener ? mq.addEventListener.bind(mq,'change') : mq.addListener.bind(mq))(function(e){
     if(e.matches && drawer.classList.contains('open')) closeMenu();
   });
