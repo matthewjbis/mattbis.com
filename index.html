@@ -774,6 +774,31 @@ main > section + section.band{border-top:0}
 .form-msg.show{opacity:1;transform:none}
 .form-msg.err{color:#ff9b88}
 
+/* contact form */
+.contact{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.contact .wrap{padding-top:clamp(72px,10vw,120px);padding-bottom:clamp(72px,10vw,120px)}
+.cform{max-width:520px;margin-top:40px;display:flex;flex-direction:column;gap:22px}
+.cform-row{display:flex;flex-direction:column;gap:8px}
+.cform-row label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.cform-row input,.cform-row textarea{font-family:var(--display);font-size:1.05rem;
+  color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);
+  padding:10px 2px;outline:none;resize:vertical;transition:border-color .25s}
+.cform-row input:focus,.cform-row textarea:focus{border-color:var(--accent)}
+.cform-hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.cform button{align-self:flex-start;font-family:var(--mono);font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--accent);color:#fff;border:0;
+  padding:14px 28px;cursor:pointer;border-radius:2px;min-height:48px;
+  transition:background .3s,transform .15s var(--easing)}
+.cform button:hover{background:var(--accent-hover)}
+.cform button:active{transform:scale(.97)}
+.cform button:disabled{background:#c9a8a0;cursor:not-allowed;transform:none}
+.contact .form-msg{color:var(--accent)}
+.contact .form-msg.err{color:#c0392b}
+@media(max-width:560px){
+  .cform button{width:100%}
+}
+
 /* ─── FOOTER ──────────────────────────────────────── */
 footer{padding:48px 0;font-family:var(--mono);font-size:12px;
   letter-spacing:.05em;color:var(--ink-faint)}
@@ -1224,6 +1249,34 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   </div>
 </section>
 
+<section id="contact" class="contact">
+  <div class="wrap reveal r-head">
+    <div class="sec-label">Get in touch</div>
+    <h2 class="sec-head">Say hello</h2>
+    <p class="sec-intro">Have a project, a question, or just want to talk shop? Send a message and I'll get back to you personally, usually within a day or two.</p>
+    <form class="cform" id="contactForm" novalidate>
+      <div class="cform-row">
+        <label for="cf-name">Name</label>
+        <input type="text" id="cf-name" name="name" autocomplete="name" required>
+      </div>
+      <div class="cform-row">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" autocomplete="email" required>
+      </div>
+      <div class="cform-row">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" rows="5" required></textarea>
+      </div>
+      <div class="cform-hp" aria-hidden="true">
+        <label for="cf-hp">Leave this field blank</label>
+        <input type="text" id="cf-hp" name="hp" tabindex="-1" autocomplete="off">
+      </div>
+      <button id="cf-submit" type="submit">Send message</button>
+    </form>
+    <div class="form-msg" id="cf-msg" role="status" aria-live="polite"></div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -1396,6 +1449,54 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
     }).then(function(){
       sub.disabled = false;
       sub.textContent = 'Get the next issue';
+    });
+  });
+
+  // ─── contact form ───
+  var cform = document.getElementById('contactForm');
+  var cfName = document.getElementById('cf-name');
+  var cfEmail = document.getElementById('cf-email');
+  var cfMessage = document.getElementById('cf-message');
+  var cfHp = document.getElementById('cf-hp');
+  var cfMsg = document.getElementById('cf-msg');
+  var cfSubmit = document.getElementById('cf-submit');
+
+  function showCfMsg(text, isErr){
+    cfMsg.textContent = text;
+    cfMsg.classList.toggle('err', !!isErr);
+    requestAnimationFrame(function(){ cfMsg.classList.add('show'); });
+  }
+
+  cform.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = cfName.value.trim();
+    var email = cfEmail.value.trim();
+    var message = cfMessage.value.trim();
+    if(!name || !message){
+      showCfMsg('Please fill in your name and message.', true);
+      return;
+    }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      showCfMsg('Enter a valid email address.', true);
+      cfEmail.focus();
+      return;
+    }
+    cfSubmit.disabled = true;
+    cfSubmit.textContent = 'Sending…';
+    cfMsg.classList.remove('show');
+    fetch('https://n8n.mattbis.com/webhook/mattbis-contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, email: email, message: message, hp: cfHp.value })
+    }).then(function(r){
+      if(!r.ok) throw new Error('send_failed');
+      showCfMsg('Message sent. I\'ll get back to you soon.', false);
+      cform.reset();
+    }).catch(function(){
+      showCfMsg('Something went wrong. Please try again, or email matthewjbis@gmail.com.', true);
+    }).then(function(){
+      cfSubmit.disabled = false;
+      cfSubmit.textContent = 'Send message';
     });
   });
 
