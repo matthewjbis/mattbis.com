@@ -262,6 +262,7 @@ nav .links > a.active{color:var(--ink)}
 .drawer.open a:nth-child(6){transition-delay:.38s}
 .drawer.open a:nth-child(7){transition-delay:.44s}
 .drawer.open a:nth-child(8){transition-delay:.50s}
+.drawer.open a:nth-child(9){transition-delay:.56s}
 .drawer .foot{margin-top:auto;font-family:var(--mono);font-size:11px;
   color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;
   display:flex;flex-direction:column;gap:8px;padding-top:32px}
@@ -866,6 +867,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
         Contact<span class="caret" aria-hidden="true"></span>
       </button>
       <span class="dropdown-menu" id="contactMenu">
+        <a href="#contact"><span class="dot" aria-hidden="true"></span>Message</a>
         <a href="mailto:matthewjbis@gmail.com"><span class="dot" aria-hidden="true"></span>Email</a>
         <a href="https://www.linkedin.com/in/matthewjbis/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>LinkedIn ↗</a>
       </span>
@@ -885,6 +887,7 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   <a href="#signal" data-nav><span>Newsletter</span><span class="n">06</span></a>
   <a href="https://blog.mattbis.com" target="_blank" rel="noopener" data-nav><span>Blog</span><span class="n">&#8599;</span></a>
   <a href="#work-with-me" data-nav><span>Work with me</span><span class="n">&rarr;</span></a>
+  <a href="#contact" data-nav><span>Contact</span><span class="n">&rarr;</span></a>
   <div class="foot">
     <span>Chicago, IL</span>
     <a href="mailto:matthewjbis@gmail.com" data-nav>matthewjbis@gmail.com</a>
@@ -1377,6 +1380,9 @@ footer .fl{display:flex;gap:24px;flex-wrap:wrap}
   });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && dd.getAttribute('data-open') === 'true'){ closeDropdown(); ddToggle.focus(); }
+  });
+  dd.querySelectorAll('.dropdown-menu a').forEach(function(a){
+    a.addEventListener('click', closeDropdown);
   });
 
   // ─── mobile drawer ──────────────────────────────
